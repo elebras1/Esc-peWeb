@@ -73,7 +73,17 @@
                                 <label for="floatingInput">Email</label>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12 ms-auto">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-floating">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Choisir un role</option>
+                                    <option value="O">Organisateur</option>
+                                    <option value="A">Administrateur</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4  ms-auto">
                             <button type="submit" class="form-control" name="submit">Envoyer</button>
                         </div>
 

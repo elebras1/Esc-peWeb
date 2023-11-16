@@ -11,8 +11,8 @@
             <h4 class="section-title"><?php echo $titre; ?></h4>
             <h4 class="section-title"><?php echo $total->number; ?></h4>
         </div>
-        <div class="mt-2">
-            <a href="#" class="btn custom-btn">
+        <div class="mt-2 mb-3">
+            <a href="<?php base_url() ?>creer" class="btn custom-btn">
                 Ajouter un compte
             </a>
         </div>

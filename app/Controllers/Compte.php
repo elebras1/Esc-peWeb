@@ -30,12 +30,12 @@ class Compte extends BaseController
         if ($this->request->getMethod()=="post")
         {
             if (!$this->validate([
-                'pseudo' => 'required|max_length[45]|min_length[2]',
+                'pseudo' => 'required|max_length[45]|min_length[2]|alpha_numeric',
                 'password' => 'required|max_length[80]|min_length[8]',
                 'password2' => 'required|max_length[80]|min_length[8]|matches[password]',
-                'nom' => 'required|max_length[80]|min_length[2]',
-                'prenom' => 'required|max_length[80]|min_length[2]',
-                'email' => 'required|max_length[200]|min_length[8]'
+                'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
+                'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
+                'email' => 'required|max_length[200]|min_length[8]|valid_email'
             ])) {
                 // La validation du formulaire a échoué, retour au formulaire !
                 return view('templates/haut', ['titre' => 'Créer un compte'])

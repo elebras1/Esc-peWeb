@@ -20,7 +20,7 @@ class Db_model extends Model
     /* fonctions de gestion des comptes*/ 
     public function get_all_compte()
     {
-        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id);");
+        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id) ORDER BY pfl_validite;");
         return $resultat->getResultArray();
     }
 
