@@ -1,0 +1,401 @@
+CRITICAL - 2023-11-16 12:01:56 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 20.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(20): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 12:01:56 --> Uncaught ErrorException: chmod() has been disabled for security reasons in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Log/Handlers/FileHandler.php:119
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Log/Handlers/FileHandler.php(119): chmod()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Log/Logger.php(294): CodeIgniter\Log\Handlers\FileHandler->handle()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Common.php(810): CodeIgniter\Log\Logger->log()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Debug/Exceptions.php(133): log_message()
+#5 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler()
+#6 {main}
+  thrown
+【Previous Exception】
+ErrorException
+Trying to get property 'etp_intitule' of non-object
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php(20): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/View/View.php(228): include('/home/2023DIFAL...')
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Common.php(1190): CodeIgniter\View\View->render()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Scenario.php(37): view()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+in SYSTEMPATH/Log/Handlers/FileHandler.php on line 119.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2023-11-16 12:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-11-16 12:13:30 --> Undefined variable: pseudos
+in APPPATH/Views/compte/affichage_comptes.php on line 19.
+ 1 APPPATH/Views/compte/affichage_comptes.php(19): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/compte/affichage_comptes.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Compte.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->lister()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 12:20:29 --> Undefined index: pfl_date_inscription
+in APPPATH/Views/compte/affichage_comptes.php on line 34.
+ 1 APPPATH/Views/compte/affichage_comptes.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/compte/affichage_comptes.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Compte.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->lister()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 12:21:03 --> Undefined index: pfl_date_inscription
+in APPPATH/Views/compte/affichage_comptes.php on line 34.
+ 1 APPPATH/Views/compte/affichage_comptes.php(34): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/compte/affichage_comptes.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Compte.php(21): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->lister()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 12:47:11 --> syntax error, unexpected '<'
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 36.
+ 1 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Scenario.php(37): view()
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 12:56:49 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 20.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(20): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:01:14 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 24.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:01:15 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 24.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:01:20 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 24.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:01:37 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 24.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:02:55 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 24.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:03:00 --> Trying to get property 'etp_intitule' of non-object
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 24.
+ 1 APPPATH/Views/etape/affichage_1ere_etape.php(24): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(228): include('/home/2023DIFAL3/e22206510/public_html/V1/ci/app/Views/etape/affichage_1ere_etape.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Scenario.php(37): view()
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:07:03 --> syntax error, unexpected '}', expecting ';' or ','
+in APPPATH/Views/etape/affichage_1ere_etape.php on line 12.
+ 1 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Scenario.php(37): view()
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:12:26 --> Too few arguments to function App\Controllers\Scenario::afficher_1ere_etape(), 1 passed in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php on line 942 and exactly 2 expected
+in APPPATH/Controllers/Scenario.php on line 25.
+ 1 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Scenario->afficher_1ere_etape()
+ 2 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-11-16 13:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:33:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:35:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:35:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:39:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:41:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 13:42:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-11-16 13:43:18 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET @id = (SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = 'fdqdmqsd:sqd:ù...' at line 2 in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 13:43:18 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET @id = (SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = 'fdqdmqsd:sqd:ù...' at line 2
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-11-16 13:43:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-11-16 13:43:49 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET @id = (SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = 'qdfsqdqsdqs');
+...' at line 2 in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 13:43:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET @id = (SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = 'qdfsqdqsdqs');
+...' at line 2
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-16 13:47:40 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '--SET @id = (SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = 'qdfsqdqsdqs')...' at line 2 in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 13:47:40 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '--SET @id = (SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = 'qdfsqdqsdqs')...' at line 2
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:49:34 --> Array to string conversion
+in APPPATH/Models/Db_model.php on line 26.
+ 1 APPPATH/Models/Db_model.php(26): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Compte.php(45): App\Models\Db_model->get_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 13:57:30 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/Compte.php on line 45.
+ 1 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 2 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-16 13:57:53 --> mysqli_sql_exception: Duplicate entry 'qdfsqdqsdqs' for key 'cpt_login_UNIQUE' in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(45): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 13:57:53 --> Duplicate entry 'qdfsqdqsdqs' for key 'cpt_login_UNIQUE'
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(45): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-11-16 13:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 14:01:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 14:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 14:08:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-11-16 14:08:53 --> mysqli_sql_exception: Incorrect parameter count in the call to native function 'SHA' in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(45): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 14:08:53 --> Incorrect parameter count in the call to native function 'SHA'
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(45): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-16 14:09:52 --> mysqli_sql_exception: Incorrect parameter count in the call to native function 'SHA' in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(45): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 14:09:52 --> Incorrect parameter count in the call to native function 'SHA'
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(45): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 14:12:55 --> Undefined variable: salt
+in APPPATH/Models/Db_model.php on line 43.
+ 1 APPPATH/Models/Db_model.php(43): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 14:13:16 --> Undefined variable: salt
+in APPPATH/Models/Db_model.php on line 43.
+ 1 APPPATH/Models/Db_model.php(43): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-16 14:16:40 --> mysqli_sql_exception: Incorrect parameter count in the call to native function 'SHA' in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 14:16:40 --> Incorrect parameter count in the call to native function 'SHA'
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-16 14:21:27 --> mysqli_sql_exception: Incorrect parameter count in the call to native function 'SHA' in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 14:21:27 --> Incorrect parameter count in the call to native function 'SHA'
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-16 14:22:30 --> mysqli_sql_exception: FUNCTION e22206510_db1.SHA512 does not exist in /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/MySQLi/Connection.php(306): mysqli->query()
+#1 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+#4 /home/2023DIFAL3/e22206510/public_html/V1/ci/app/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+#5 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(942): App\Controllers\Compte->creer()
+#6 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 /home/2023DIFAL3/e22206510/public_html/V1/ci/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/2023DIFAL3/e22206510/public_html/V1/ci/public/index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-11-16 14:22:30 --> FUNCTION e22206510_db1.SHA512 does not exist
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 APPPATH/Models/Db_model.php(48): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/Compte.php(43): App\Models\Db_model->set_compte()
+ 3 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\Compte->creer()
+ 4 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-11-16 14:27:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 14:30:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 16:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 16:31:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-16 21:04:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
