@@ -7,7 +7,7 @@
 <?php
 if (!isset($etape)) {
     echo "<div class='container'>";
-    echo "Erreur : Pas d'étape";
+    echo "<h2 class='mb-2'>Erreur : Pas d'étape</h2>";
     echo "</div>";
     echo "<br>";
     echo "<br>";
