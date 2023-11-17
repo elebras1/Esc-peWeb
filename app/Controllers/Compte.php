@@ -65,6 +65,9 @@ class Compte extends BaseController
                     'min_length' => 'L\'adresse e-mail doit avoir au moins 8 caractères.',
                     'valid_email' => 'Veuillez entrer une adresse e-mail valide.',
                 ],
+                'role' => [
+                    'required' => 'Veuillez selectionner un role.'
+                ]
             ];
 
             if (!$this->validate([
@@ -73,7 +76,8 @@ class Compte extends BaseController
                 'password2' => 'required|max_length[80]|min_length[8]|matches[password]',
                 'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
                 'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
-                'email' => 'required|max_length[200]|min_length[8]|valid_email'
+                'email' => 'required|max_length[200]|min_length[8]|valid_email',
+                'role' => 'required'
             ], $messages)) {
                 // La validation du formulaire a échoué, retour au formulaire !
                 return view('templates/haut', ['titre' => 'Créer un compte'])

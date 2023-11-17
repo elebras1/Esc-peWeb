@@ -20,7 +20,7 @@ class Db_model extends Model
     /* fonctions de gestion des comptes*/ 
     public function get_all_compte()
     {
-        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id) ORDER BY pfl_validite;");
+        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id) ORDER BY pfl_validite, pfl_date_inscription;");
         return $resultat->getResultArray();
     }
 
@@ -41,9 +41,6 @@ class Db_model extends Model
         //Récuparation (+ traitement si nécessaire) des données du formulaire
         $login = addslashes($saisie['pseudo']);
         $mot_de_passe = $saisie['password'] . $this->salt;
-        $nom = addslashes($saisie['nom']);
-        $prenom = addslashes($saisie['prenom']);
-        $email = $saisie['email'];
         $sql = "INSERT INTO t_compte_cpt(cpt_login, cpt_mot_de_passe) VALUES('".$login."',SHA2('".$mot_de_passe."', 512))";
         return $this->db->query($sql);
     }
@@ -55,7 +52,8 @@ class Db_model extends Model
         $nom = addslashes($saisie['nom']);
         $prenom = addslashes($saisie['prenom']);
         $email = $saisie['email'];
-        $sql="INSERT INTO t_profil_pfl VALUES(".$cpt_id.",'".$nom."', '".$prenom."', '".$email."', CURDATE(), 'O', 'D')";
+        $role = $saisie['role'];
+        $sql = "INSERT INTO t_profil_pfl VALUES(".$cpt_id.",'".$nom."', '".$prenom."', '".$email."', CURDATE(), '".$role."', 'D')";
         return $this->db->query($sql);
     }
 

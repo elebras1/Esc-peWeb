@@ -74,8 +74,8 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12">
-                            <div class="form-floating">
-                                <select class="form-select" aria-label="Default select example">
+                            <div class="">
+                                <select class="form-select" aria-label="Default select example" name="role" id="role">
                                     <option selected>Choisir un role</option>
                                     <option value="O">Organisateur</option>
                                     <option value="A">Administrateur</option>
