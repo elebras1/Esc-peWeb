@@ -40,7 +40,7 @@ class Compte extends BaseController
                     'required' => 'Veuillez entrer un mot de passe.',
                     'max_length' => 'Le mot de passe ne doit pas dépasser 80 caractères.',
                     'min_length' => 'Le mot de passe doit avoir au moins 8 caractères.',
-                    'regex_match' => 'Le mot de passe ne doit contenir que des caractères alphanumériques et les caractères spéciaux : ! @ # % & * ( ) _ + : " < > ? - .'
+                    'regex_match' => 'Le mot de passe ne doit contenir que des caractères alphanumériques et les caractères spéciaux : ! @ # % & * ( ) _ + : < > ? - .'
                 ],
                 'password2' => [
                     'required' => 'Veuillez confirmer le mot de passe.',
@@ -73,10 +73,10 @@ class Compte extends BaseController
 
             if (!$this->validate([
                 'pseudo' => 'required|max_length[45]|min_length[2]|alpha_numeric',
-                'password' => 'required|max_length[80]|min_length[8]|regex_match[/^[a-zA-Z0-9!@#%&*()_+:<>?-]/]',
+                'password' => 'required|max_length[80]|min_length[8]|regex_match[/^[a-zA-Z0-9!@#%&*()_+:<>?-]+$/]',
                 'password2' => 'required|max_length[80]|min_length[8]|matches[password]',
-                'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]/]',
-                'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]/]',
+                'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
+                'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
                 'email' => 'required|max_length[200]|min_length[8]|valid_email',
                 'role' => 'required'
             ], $messages)) {
