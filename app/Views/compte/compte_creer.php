@@ -15,7 +15,6 @@
                     <h4 class="section-title"><?php echo $titre; ?></h4>
                 </div>
                 <?= session()->getFlashdata('error') ?>
-                <?= validation_list_errors() ?>
                 <?php
                 // Création d’un formulaire qui pointe vers l’URL de base + /compte/creer
                 echo form_open('/compte/creer', array('class' => 'custom-form contact-form')); ?>
@@ -25,7 +24,7 @@
                             <div class="form-floating">
                                 <input type="text" name="pseudo" id="pseudo" class="form-control"
                                     placeholder="pseudo" required="">
-
+                                <?= validation_show_error('pseudo') ?>
                                 <label for="floatingInput">Pseudo</label>
                             </div>
                         </div>
@@ -34,7 +33,7 @@
                             <div class="form-floating">
                                 <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Mot de passe" required="">
-
+                                <?= validation_show_error('password') ?>
                                 <label for="floatingInput">Mot de passe</label>
                             </div>
                         </div>
@@ -42,7 +41,7 @@
                             <div class="form-floating">
                                 <input type="password" name="password2" id="password2" class="form-control"
                                     placeholder="Mot de passe" required="">
-
+                                <?= validation_show_error('password2') ?>
                                 <label for="floatingInput">Confirmation du mot de passe</label>
                             </div>
                         </div>
@@ -51,7 +50,7 @@
                             <div class="form-floating">
                                 <input type="text" name="nom" id="nom" class="form-control"
                                     placeholder="Nom" required="">
-
+                                <?= validation_show_error('nom') ?>
                                 <label for="floatingInput">Nom</label>
                             </div>
                         </div>
@@ -60,7 +59,7 @@
                             <div class="form-floating">
                                 <input type="text" name="prenom" id="prenom" class="form-control"
                                     placeholder="Prenom" required="">
-
+                                <?= validation_show_error('prenom') ?>
                                 <label for="floatingInput">Prénom</label>
                             </div>
                         </div>
@@ -69,7 +68,7 @@
                             <div class="form-floating">
                                 <input type="email" name="email" id="email" class="form-control"
                                     placeholder="Email" required="">
-
+                                <?= validation_show_error('email') ?>
                                 <label for="floatingInput">Email</label>
                             </div>
                         </div>
@@ -81,6 +80,7 @@
                                     <option value="A">Administrateur</option>
                                 </select>
                             </div>
+                            <?= validation_show_error('role') ?>
                         </div>
 
                         <div class="col-lg-4  ms-auto">
