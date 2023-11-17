@@ -90,9 +90,7 @@ class Compte extends BaseController
             $data['le_message']="Nouveau nombre de comptes : ";
             //Appel de la fonction créée dans le précédent tutoriel :
             $data['total']=$this->model->get_number_compte();
-            return view('templates/haut', $data)
-            . view('compte/compte_succes')
-            . view('templates/bas');
+            return redirect()->to('/compte/lister');
         }
         // L’utilisateur veut afficher le formulaire pour créer un compte
         return view('templates/haut', ['titre' => 'Créer un compte'])

@@ -8,13 +8,12 @@ class Accueil extends BaseController
 {
     public function __construct()
     {
-        //...
+        $this->model = model(Db_model::class);
     }
 
     public function afficher()
     {
-        $model = model(Db_model::class);
-        $data['actualites'] = $model->get_all_actualites(); 
+        $data['actualites'] = $this->model->get_all_actualites(); 
 
         return view('templates/haut', $data)
             . view('affichage_accueil')
