@@ -75,8 +75,8 @@ class Compte extends BaseController
                 'pseudo' => 'required|max_length[45]|min_length[2]|alpha_numeric',
                 'password' => 'required|max_length[80]|min_length[8]|regex_match[/^[a-zA-Z0-9!@#%&*()_+:<>?-]+$/]',
                 'password2' => 'required|max_length[80]|min_length[8]|matches[password]',
-                'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
-                'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-Z\'\s]+$/]',
+                'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-ZÀ-ÿç\'\s]+$/]',
+                'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-ZÀ-ÿç\'\s]+$/]',
                 'email' => 'required|max_length[200]|min_length[8]|valid_email',
                 'role' => 'required'
             ], $messages)) {
