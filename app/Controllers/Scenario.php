@@ -23,7 +23,7 @@ class Scenario extends BaseController
 
     public function afficher_1ere_etape($code = 0, $difficulte = 0)
     {
-        if ($code == 0 || $difficulte == 0)
+        if ($code == 0 || $difficulte == 0 || $difficulte > 3)
         {
             return redirect()->to('/scenario/lister');
         }

@@ -36,15 +36,14 @@ if (!isset($etape)) {
                                     </div>
                                 </div>
                                 </br>
-                                <p class="bi-chat me-1">
                                 <?php
                                     if ($etape->idc_id) 
                                     {
+                                        echo '<p class="bi-chat me-1">';
                                         echo "<span>Indice difficulté (" .$etape->idc_difficulte. ") : ". $etape->idc_description . "<span>";
                                         echo '<a href="' . $etape->idc_url . '" target="_blank"><span>' . $etape->idc_url . '</span></a>';
+                                        echo '</p>';
 
-                                    } else {
-                                        echo "Pas d'indice";
                                     }
                                     ?>
                                 </p>
