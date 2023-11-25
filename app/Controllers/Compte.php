@@ -13,14 +13,23 @@ class Compte extends BaseController
     }
     public function lister()
     {
-        $model = model(Db_model::class);
-        $data['titre']="Liste de tous les comptes";
-        $data['logins'] = $this->model->get_all_compte();
-        $data['total'] = $this->model->get_number_compte();
+        $session=session();
+        if ($session->has('user'))
+        {
+            $data['titre']="Comptes";
+            $data['logins'] = $this->model->get_all_compte();
+            $data['total'] = $this->model->get_number_compte();
 
-        return view('templates/haut', $data)
-        .view('compte/affichage_comptes')
-        .view('templates/bas');
+            return view('templates/haut_admin', $data)
+            .view('compte/affichage_comptes')
+            .view('templates/bas_admin');
+        }
+        else
+        {
+            return view('templates/haut', ['titre' => 'Se connecter'])
+            . view('compte/compte_connecter')
+            . view('templates/bas');
+        }
     }
 
     public function connecter()
@@ -144,6 +153,7 @@ class Compte extends BaseController
         $session=session();
         if ($session->has('user'))
         {
+            $data['titre'] = 'Profil';
             $login = $session->get('user');
             $data['profil'] = $this->model->get_profil($login);
 
