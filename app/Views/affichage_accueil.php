@@ -27,6 +27,14 @@
 <section class="">
     <div class="container">
         <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Intitulé</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Auteur</th>
+                </tr>
+            </thead>
             <tbody>
                 <?php
                     if (! empty($actualites) && is_array($actualites))

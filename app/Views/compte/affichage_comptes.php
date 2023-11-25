@@ -17,6 +17,17 @@
             </a>
         </div>
         <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Validité</th>
+                </tr>
+            </thead>
             <tbody>
                 <?php
                     if (! empty($logins) && is_array($logins))
