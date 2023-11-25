@@ -66,7 +66,7 @@ https://templatemo.com/tm-584-pod-talk
                 </ul>
 
                 <div class="ms-4">
-                    <a href="#" class="btn custom-btn custom-border-btn smoothscroll">Connexion</a>
+                    <a href="<?php echo base_url();?>index.php/compte/connecter" class="btn custom-btn custom-border-btn smoothscroll">Connexion</a>
                 </div>
             </div>
         </div>

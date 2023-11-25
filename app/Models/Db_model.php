@@ -45,12 +45,13 @@ class Db_model extends Model
         return $this->db->query($sql);
     }
 
-    public function connect_compte($u,$p)
+    public function connect_compte($login, $mot_de_passe)
     {
+        $mot_de_passe = $mot_de_passe . $this->salt;
         $sql="SELECT cpt_login,cpt_mot_de_passe
             FROM t_compte_cpt
-            WHERE cpt_login='".$u."'
-            AND cpt_mot_de_passe='".$p."';";
+            WHERE cpt_login='".$login."'
+            AND cpt_mot_de_passe=SHA2('".$mot_de_passe."', 512)";
         $resultat=$this->db->query($sql);
 
         if($resultat->getNumRows() > 0)
@@ -73,6 +74,12 @@ class Db_model extends Model
         $role = $saisie['role'];
         $sql = "INSERT INTO t_profil_pfl VALUES(".$cpt_id.",'".$nom."', '".$prenom."', '".$email."', CURDATE(), '".$role."', 'D')";
         return $this->db->query($sql);
+    }
+
+    public function get_profil($login)
+    {
+        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id) WHERE cpt_login = '".$login."';");
+        return $resultat->getRow();
     }
 
     /* fonctions de gestion des actualites */

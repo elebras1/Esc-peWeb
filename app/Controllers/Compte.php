@@ -43,9 +43,9 @@ class Compte extends BaseController
                 $session=session();
                 $session->set('user',$username);
                 //adapter le haut et bas administrateur bootstrap2
-                return view('templates/haut')
+                return view('templates/haut_admin')
                 . view('compte/compte_accueil')
-                . view('templates/bas');
+                . view('templates/bas_admin');
             }
             else
             { 
@@ -138,4 +138,34 @@ class Compte extends BaseController
         . view('compte/compte_creer')
         . view('templates/bas');
     }
+
+    public function afficher_profil()
+    {
+        $session=session();
+        if ($session->has('user'))
+        {
+            $login = $session->get('user');
+            $data['profil'] = $this->model->get_profil($login);
+
+            return view('templates/haut_admin',$data)
+            . view('compte/compte_profil')
+            . view('templates/bas_admin');
+        }
+        else
+        {
+            return view('templates/haut', ['titre' => 'Se connecter'])
+            . view('compte/compte_connecter')
+            . view('templates/bas');
+        }
+    }
+    
+    public function deconnecter()
+    {
+        $session=session();
+        $session->destroy();
+        return view('templates/haut', ['titre' => 'Se connecter'])
+        . view('compte/compte_connecter')
+        . view('templates/bas');
+    }
+
 }
