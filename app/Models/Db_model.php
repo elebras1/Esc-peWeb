@@ -48,10 +48,11 @@ class Db_model extends Model
     public function connect_compte($login, $mot_de_passe)
     {
         $mot_de_passe = $mot_de_passe . $this->salt;
-        $sql="SELECT cpt_login,cpt_mot_de_passe
-            FROM t_compte_cpt
+        $sql="SELECT cpt_login, cpt_mot_de_passe
+            FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id)
             WHERE cpt_login='".$login."'
-            AND cpt_mot_de_passe=SHA2('".$mot_de_passe."', 512)";
+            AND cpt_mot_de_passe = SHA2('".$mot_de_passe."', 512)
+            AND pfl_validite = 'A'";
         $resultat=$this->db->query($sql);
 
         if($resultat->getNumRows() > 0)

@@ -30,9 +30,9 @@
 
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-floating">
-                                <input type="password" name="mdp" id="mdp" class="form-control"
+                                <input type="password" name="motDePasse" id="motDePasse" class="form-control"
                                     placeholder="Mot de passe" required="">
-                                <?= validation_show_error('mdp') ?>
+                                <?= validation_show_error('motDePasse') ?>
                                 <label for="floatingInput">Mot de passe</label>
                             </div>
                         </div>
