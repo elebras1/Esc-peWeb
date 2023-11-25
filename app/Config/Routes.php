@@ -18,3 +18,5 @@ $routes->get('scenario/afficher_1ere_etape/(:num)/', [Scenario::class, 'afficher
 $routes->get('scenario/afficher_1ere_etape/', [Scenario::class, 'afficher_1ere_etape']);
 $routes->get('compte/creer', [Compte::class, 'creer']);
 $routes->post('compte/creer', [Compte::class, 'creer']); 
+$routes->get('compte/connecter', [Compte::class, 'connecter']);
+$routes->post('compte/connecter', [Compte::class, 'connecter']);

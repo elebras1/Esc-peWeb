@@ -23,6 +23,42 @@ class Compte extends BaseController
         .view('templates/bas');
     }
 
+    public function connecter()
+    {
+        $model = model(Db_model::class);
+        // L’utilisateur a validé le formulaire en cliquant sur le bouton
+        if ($this->request->getMethod()=="post"){
+            if (! $this->validate(['pseudo' => 'required','mdp' => 'required']))
+            { 
+                // La validation du formulaire a échoué, retour au formulaire !
+                return view('templates/haut', ['titre' => 'Se connecter'])
+                . view('compte/compte_connecter')
+                . view('templates/bas');
+            }
+            // La validation du formulaire a réussi, traitement du formulaire
+            $username=$this->request->getVar('pseudo');
+            $password=$this->request->getVar('mdp');
+            if ($model->connect_compte($username,$password)==true)
+            {
+                $session=session();
+                $session->set('user',$username);
+                //adapter le haut et bas administrateur bootstrap2
+                return view('templates/haut')
+                . view('compte/compte_accueil')
+                . view('templates/bas');
+            }
+            else
+            { 
+                return view('templates/haut', ['titre' => 'Se connecter'])
+                . view('compte/compte_connecter')
+                . view('templates/bas');
+            }
+        }
+        return view('templates/haut', ['titre' => 'Se connecter'])
+        . view('compte/compte_connecter')
+        . view('templates/bas');
+    }
+
     public function creer()
     {
         // L’utilisateur a validé le formulaire en cliquant sur le bouton

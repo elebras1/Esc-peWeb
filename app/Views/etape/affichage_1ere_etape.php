@@ -49,9 +49,15 @@ if (!isset($etape)) {
                                 </p>
                                 <br>
                                 <!--
-                                <p>reponse : <?php //echo $etape->etp_reponse;?></p>
-                                <button type="button" class="btn btn-primary btn-lg btn-block ml-auto">Envoyer</button>
-                                -->
+                                <p>reponse : <?php //echo $etape->etp_reponse;?></p>-->
+                                <div class="col-lg-12 col-12">
+                                    <div class="form-floating">
+                                        <input type="text" name="reponse" id="reponse" class="form-control"
+                                            placeholder="reponse" required="">
+                                        <label for="floatingInput">Reponse</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block ml-auto">Envoyer</button>
                             </div>
                         </div>
                     </div>

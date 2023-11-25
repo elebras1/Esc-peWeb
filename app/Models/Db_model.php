@@ -45,7 +45,25 @@ class Db_model extends Model
         return $this->db->query($sql);
     }
 
-    /* fonctions de gestion des comptes*/
+    public function connect_compte($u,$p)
+    {
+        $sql="SELECT cpt_login,cpt_mot_de_passe
+            FROM t_compte_cpt
+            WHERE cpt_login='".$u."'
+            AND cpt_mot_de_passe='".$p."';";
+        $resultat=$this->db->query($sql);
+
+        if($resultat->getNumRows() > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /* fonctions de gestion des profils*/
     public function set_profil($saisie, $cpt_id)
     {
         //Récuparation (+ traitement si nécessaire) des données du formulaire
@@ -75,12 +93,9 @@ class Db_model extends Model
     {
         $resultat = $this->db->query
         (
-            "SELECT DISTINCT cpt_login, snr_code, snr_intitule, etp_code, etp_intitule, snr_image
+            "SELECT DISTINCT cpt_login, snr_code, snr_intitule, snr_image
             FROM t_compte_cpt JOIN t_scenario_snr USING(cpt_id)
-            JOIN t_etape_etp USING(snr_id)
-            JOIN t_indice_idc USING(etp_id)
-            WHERE etp_numero = 1
-            AND snr_statut = 'A';"
+            WHERE snr_statut = 'A';"
         );
         return $resultat->getResultArray();
     }
