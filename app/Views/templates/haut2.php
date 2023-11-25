@@ -38,6 +38,14 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+
+  <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/owl.theme.default.min.css">
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -46,60 +54,43 @@
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="<?php echo base_url();?>">
         <img src="<?php echo base_url();?>bootstrap/images/logo_website.png" class="logo-image img-fluid" alt="templatemo pod talk">
-        <span class="ms-1 font-weight-bold text-white">EscapeWeb Administration</span>
+        <?php
+          if (session()->role == 'A')
+          {
+            echo ('<span class="ms-1 font-weight-bold text-white">EscapeWeb Administrateur</span>');
+          }
+          elseif (session()->role == 'O') {
+            echo ('<span class="ms-1 font-weight-bold text-white">EscapeWeb Organisateur</span>');
+          }
+        ?>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>index.php/compte/afficher_profil">
+          <a class="nav-link text-white " href="<?php echo base_url();?>index.php/compte/afficher_accueil">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
             <span class="nav-link-text ms-1">Accueil</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>index.php/compte/lister">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
-            </div>
-            <span class="nav-link-text ms-1">Comptes</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>bootstrap2/pages/billing.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>bootstrap2/pages/virtual-reality.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
-            </div>
-            <span class="nav-link-text ms-1">Virtual Reality</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>bootstrap2/pages/rtl.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-            </div>
-            <span class="nav-link-text ms-1">RTL</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>bootstrap2/pages/notifications.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">notifications</i>
-            </div>
-            <span class="nav-link-text ms-1">Notifications</span>
-          </a>
-        </li>
+        <?php
+          if (session()->role == 'A')
+          {
+        ?>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="<?php echo base_url();?>index.php/compte/lister">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">Comptes</span>
+            </a>
+          </li>
+        <?php
+          }
+        ?>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Section utilisateur</h6>
         </li>
@@ -117,14 +108,6 @@
               <i class="material-icons opacity-10">login</i>
             </div>
             <span class="nav-link-text ms-1">Déconnexion</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url();?>bootstrap2/pages/sign-up.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Inscription</span>
           </a>
         </li>
       </ul>

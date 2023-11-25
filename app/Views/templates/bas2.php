@@ -17,6 +17,12 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?php echo base_url();?>bootstrap2/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="<?php echo base_url();?>bootstrapjs/jquery.min.js"></script>
+  <script src="<?php echo base_url();?>bootstrapjs/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url();?>bootstrapjs/owl.carousel.min.js"></script>
+  <script src="<?php echo base_url();?>bootstrapjs/custom.js"></script>
 </body>
 
 </html>
