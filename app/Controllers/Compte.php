@@ -191,6 +191,8 @@ class Compte extends BaseController
         $session=session();
         if ($session->has('user'))
         {
+            $login = $session->get('user');
+            $data['profil'] = $this->model->get_profil($login);
             // L’utilisateur a validé le formulaire en cliquant sur le bouton
             if ($this->request->getMethod()=="post")
             {
@@ -248,7 +250,7 @@ class Compte extends BaseController
                 ], $messages)) {
                     // La validation du formulaire a échoué, retour au formulaire !
                     return view('templates/haut2', ['titre' => 'Créer un compte'])
-                    . view('compte/compte_modifier')
+                    . view('compte/compte_modifier', $data)
                     . view('templates/bas2');
                 }
                 // La validation du formulaire a réussi, traitement du formulaire
@@ -265,7 +267,7 @@ class Compte extends BaseController
             }
             // L’utilisateur veut afficher le formulaire pour créer un compte
             return view('templates/haut2', ['titre' => 'Créer un compte'])
-            . view('compte/compte_modifier')
+            . view('compte/compte_modifier', $data)
             . view('templates/bas2');
         }
         else 

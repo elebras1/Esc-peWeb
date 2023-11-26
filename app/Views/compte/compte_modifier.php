@@ -28,13 +28,13 @@
                         <div class="col-lg-12 col-12">
                             <div class="form-floating">
                                 <input type="text" name="pseudo" id="pseudo" class="form-control"
-                                    placeholder="pseudo" required="">
+                                    placeholder="pseudo" required="" value="<?php echo $profil->cpt_login; ?>">
                                 <?= validation_show_error('pseudo') ?>
                                 <label for="floatingInput">Pseudo</label>
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Mot de passe" required="">
@@ -42,7 +42,7 @@
                                 <label for="floatingInput">Mot de passe</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="password" name="password2" id="password2" class="form-control"
                                     placeholder="Mot de passe" required="">
@@ -51,44 +51,44 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="text" name="nom" id="nom" class="form-control"
-                                    placeholder="Nom" required="">
+                                    placeholder="Nom" required="" value="<?php echo $profil->pfl_nom; ?>">
                                 <?= validation_show_error('nom') ?>
                                 <label for="floatingInput">Nom</label>
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="text" name="prenom" id="prenom" class="form-control"
-                                    placeholder="Prenom" required="">
+                                    placeholder="Prenom" required="" value="<?php echo $profil->pfl_prenom; ?>">
                                 <?= validation_show_error('prenom') ?>
                                 <label for="floatingInput">Prénom</label>
                             </div>
                         </div>
 
-                        <div class="col-lg-12 col-12">
+                        <div class="col-lg-12 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="Email" required="">
+                                    placeholder="Email" required="" value="<?php echo $profil->pfl_email; ?>">
                                 <?= validation_show_error('email') ?>
                                 <label for="floatingInput">Email</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="">
                                 <select class="form-select" aria-label="Default select example" name="role" id="role">
                                     <option selected>Choisir un role</option>
-                                    <option value="O">Organisateur</option>
-                                    <option value="A">Administrateur</option>
+                                    <option value="O" <?php echo ($profil->pfl_role == 'O') ? 'selected' : ''; ?>>Organisateur</option>
+                                    <option value="A" <?php echo ($profil->pfl_role == 'A') ? 'selected' : ''; ?>>Administrateur</option>
                                 </select>
                             </div>
                             <?= validation_show_error('role') ?>
                         </div>
 
-                        <div class="col-lg-4  ms-auto">
+                        <div class="col-lg-4  ms-auto mt-4">
                             <button type="submit" class="form-control" name="submit">Envoyer</button>
                         </div>
 

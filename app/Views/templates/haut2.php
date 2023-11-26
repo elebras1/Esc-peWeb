@@ -22,7 +22,7 @@
   <link rel="icon" href="<?php echo base_url();?>bootstrap/images/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="<?php echo base_url();?>bootstrap/images/favicon.ico" type="image/x-icon">
   <title>
-    Material Dashboard 2 by Creative Tim
+    EscapeWeb
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -41,11 +41,12 @@
 
   <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap-icons.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/owl.theme.default.min.css">
+  
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
