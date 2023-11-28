@@ -51,8 +51,8 @@
                                         echo "</div>";
                                         echo "</td>";
                                         echo "<td>";
-                                        echo "<p class='text-xs font-weight-bold mb-0'>" . $pseudo["pfl_nom"] . "</p>";
-                                        echo "<p class='text-xs text-secondary mb-0'>" . $pseudo["pfl_prenom"] . "</p>";
+                                        echo "<p class='text-xs font-weight-bold mb-0'>" . stripslashes($pseudo["pfl_nom"]) . "</p>";
+                                        echo "<p class='text-xs text-secondary mb-0'>" . stripslashes($pseudo["pfl_prenom"]) . "</p>";
                                         echo "</td>";
                                         echo "<td class='align-middle text-center'>";
                                         echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_date_inscription"] . "</span>";

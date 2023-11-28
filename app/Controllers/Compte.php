@@ -198,20 +198,18 @@ class Compte extends BaseController
             {
                 // Messages d'erreur de validation du formulaire
                 $messages = [
-                    'pseudo' => [
-                        'required' => 'Veuillez entrer un pseudo.',
-                        'max_length' => 'Le pseudo ne doit pas dépasser 45 caractères.',
-                        'min_length' => 'Le pseudo doit avoir au moins 2 caractères.',
-                        'alpha_numeric' => 'Le pseudo ne doit contenir que des caractères alphanumériques.',
-                    ],
                     'password' => [
                         'required' => 'Veuillez entrer un mot de passe.',
                         'max_length' => 'Le mot de passe ne doit pas dépasser 80 caractères.',
                         'min_length' => 'Le mot de passe doit avoir au moins 8 caractères.',
                         'regex_match' => 'Le mot de passe ne doit contenir que des caractères alphanumériques et les caractères spéciaux : ! @ # % & * ( ) _ + : < > ? - .'
                     ],
-                    'password2' => [
-                        'required' => 'Veuillez confirmer le mot de passe.',
+                    'new_password' => [
+                        'max_length' => 'La confirmation du mot de passe ne doit pas dépasser 80 caractères.',
+                        'min_length' => 'La confirmation du mot de passe doit avoir au moins 8 caractères.',
+                        'matches' => 'La confirmation du mot de passe ne correspond pas au mot de passe saisi.',
+                    ],
+                    'new_password2' => [
                         'max_length' => 'La confirmation du mot de passe ne doit pas dépasser 80 caractères.',
                         'min_length' => 'La confirmation du mot de passe doit avoir au moins 8 caractères.',
                         'matches' => 'La confirmation du mot de passe ne correspond pas au mot de passe saisi.',
@@ -233,40 +231,39 @@ class Compte extends BaseController
                         'max_length' => 'L\'adresse e-mail ne doit pas dépasser 200 caractères.',
                         'min_length' => 'L\'adresse e-mail doit avoir au moins 8 caractères.',
                         'valid_email' => 'Veuillez entrer une adresse e-mail valide.',
-                    ],
-                    'role' => [
-                        'required' => 'Veuillez selectionner un role.'
                     ]
                 ];
 
                 if (!$this->validate([
-                    'pseudo' => 'required|max_length[45]|min_length[2]|alpha_numeric',
                     'password' => 'required|max_length[80]|min_length[8]|regex_match[/^[a-zA-Z0-9!@#%&*()_+:<>?-]+$/]',
-                    'password2' => 'required|max_length[80]|min_length[8]|matches[password]',
+                    'new_password' => 'required|max_length[80]|min_length[8]|regex_match[/^[a-zA-Z0-9!@#%&*()_+:<>?-]+$/]',
+                    'new_password2' => 'matches[new_password]',
                     'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-ZÀ-ÿç\'\s]+$/]',
                     'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-ZÀ-ÿç\'\s]+$/]',
-                    'email' => 'required|max_length[200]|min_length[8]|valid_email',
-                    'role' => 'required'
+                    'email' => 'required|max_length[200]|min_length[8]|valid_email'
                 ], $messages)) {
                     // La validation du formulaire a échoué, retour au formulaire !
-                    return view('templates/haut2', ['titre' => 'Créer un compte'])
+                    return view('templates/haut2', ['titre' => 'Modifier le profil'])
                     . view('compte/compte_modifier', $data)
                     . view('templates/bas2');
                 }
                 // La validation du formulaire a réussi, traitement du formulaire
                 $recuperation = $this->validator->getValidated();
+
+                if($data['profil']->cpt_mot_de_passe != hash('sha512', $recuperation['password'] . $this->model->get_salt()))
+                {
+                    return view('templates/haut2', ['titre' => 'Modifier le profil'])
+                    . view('compte/compte_modifier', $data)
+                    . view('templates/bas2');
+                }
                 
-                $this->model->set_compte($recuperation);
-                $compte = $this->model->get_compte($recuperation['pseudo']);
-                $this->model->set_profil($recuperation, $compte->cpt_id);
-                $data['le_compte']=$recuperation['pseudo'];
-                $data['le_message']="Nouveau nombre de comptes : ";
-                //Appel de la fonction créée dans le précédent tutoriel :
-                $data['total']=$this->model->get_number_compte();
-                return redirect()->to('/compte/lister');
+                $this->model->update_compte($recuperation, $data['profil']->cpt_id);
+                $this->model->update_profil($recuperation, $data['profil']->cpt_id);
+
+                return redirect()->to('/compte/afficher_profil');
             }
             // L’utilisateur veut afficher le formulaire pour créer un compte
-            return view('templates/haut2', ['titre' => 'Créer un compte'])
+            return view('templates/haut2', ['titre' => 'Modifier le profil'])
             . view('compte/compte_modifier', $data)
             . view('templates/bas2');
         }

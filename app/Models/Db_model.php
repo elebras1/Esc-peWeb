@@ -17,6 +17,11 @@ class Db_model extends Model
         $this->salt = "s1a2l3t4";
     }
 
+    public function get_salt()
+    {
+        return $this->salt;
+    }
+
     /* fonctions de gestion des comptes*/ 
     public function get_all_compte()
     {
@@ -39,9 +44,16 @@ class Db_model extends Model
     public function set_compte($saisie)
     {
         //Récuparation (+ traitement si nécessaire) des données du formulaire
-        $login = addslashes($saisie['pseudo']);
+        $login = $saisie['pseudo'];
         $mot_de_passe = $saisie['password'] . $this->salt;
         $sql = "INSERT INTO t_compte_cpt(cpt_login, cpt_mot_de_passe) VALUES('".$login."',SHA2('".$mot_de_passe."', 512))";
+        return $this->db->query($sql);
+    }
+
+    public function update_compte($saisie, $cpt_id)
+    {
+        $mot_de_passe = $saisie['new_password'] . $this->salt;;
+        $sql = "UPDATE t_compte_cpt SET cpt_mot_de_passe = SHA2('".$mot_de_passe."', 512) WHERE cpt_id = ".$cpt_id.";";
         return $this->db->query($sql);
     }
 
@@ -81,6 +93,16 @@ class Db_model extends Model
     {
         $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id) WHERE cpt_login = '".$login."';");
         return $resultat->getRow();
+    }
+
+    public function update_profil($saisie, $cpt_id)
+    {
+        //Récuparation (+ traitement si nécessaire) des données du formulaire
+        $nom = addslashes($saisie['nom']);
+        $prenom = addslashes($saisie['prenom']);
+        $email = $saisie['email'];
+        $sql = "UPDATE t_profil_pfl SET pfl_prenom = '".$prenom."', pfl_nom = '".$nom."', pfl_email = '".$email."' WHERE cpt_id = ".$cpt_id.";";
+        return $this->db->query($sql);
     }
 
     /* fonctions de gestion des actualites */

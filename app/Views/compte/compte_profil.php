@@ -14,20 +14,32 @@
         <span class="mask  bg-gradient-primary  opacity-6"></span>
     </div>
     <div class="card card-body mx-3 mx-md-4 mt-n6">
-        <div class="p-5">
-            <?php
+        <div class="row">
+            <div class="col-md-8">
+                <div class="p-5 d-flex flex-column">
+                    <?php
+                    if (!empty($profil)) {
+                        echo '<p class="fs-3"><strong class="text-dark">Login:</strong> ' . $profil->cpt_login . '</p>';
+                        echo '<p class="fs-3"><strong class="text-dark">Nom:</strong> ' . stripslashes($profil->pfl_nom) . '</p>';
+                        echo '<p class="fs-3"><strong class="text-dark">Prénom:</strong> ' . stripslashes($profil->pfl_prenom) . '</p>';
+                        echo '<p class="fs-3"><strong class="text-dark">Email:</strong> ' . $profil->pfl_email . '</p>';
+                        echo '<p class="fs-3"><strong class="text-dark">Date d\'inscription:</strong> ' . $profil->pfl_date_inscription . '</p>';
+                        echo '<p class="fs-3"><strong class="text-dark">Role:</strong> ' . $profil->pfl_role . '</p>';
+                        echo '<p class="fs-3"><strong class="text-dark">Validité:</strong> ' . $profil->pfl_validite . '</p>';
+                    } else {
+                        echo "<p class='fs-4'>Profil non disponible</p>";
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <?php
                 if (!empty($profil)) {
-                    echo '<p class="fs-3"><strong class="text-dark">Login:</strong> ' . $profil->cpt_login . '</p>';
-                    echo '<p class="fs-3"><strong class="text-dark">Nom:</strong> ' . $profil->pfl_nom . '</p>';
-                    echo '<p class="fs-3"><strong class="text-dark">Prénom:</strong> ' . $profil->pfl_prenom . '</p>';
-                    echo '<p class="fs-3"><strong class="text-dark">Email:</strong> ' . $profil->pfl_email . '</p>';
-                    echo '<p class="fs-3"><strong class="text-dark">Date d\'inscription:</strong> ' . $profil->pfl_date_inscription . '</p>';
-                    echo '<p class="fs-3"><strong class="text-dark">Role:</strong> ' . $profil->pfl_role . '</p>';
-                    echo '<p class="fs-3"><strong class="text-dark">Validité:</strong> ' . $profil->pfl_validite . '</p>';
-                } else {
-                    echo "<p class='fs-4'>Profil non disponible</p>";
+                    echo '<a href="' . base_url() . 'index.php/compte/modifier" class="btn btn-primary form-control" name="submit" style="text-align: center;">Modifier</a>';
                 }
-            ?>
+                ?>
+            </div>
         </div>
     </div>
 </div>
+

@@ -25,73 +25,63 @@
                 echo form_open('/compte/modifier', array('class' => 'custom-form contact-form')); ?>
                     <?= csrf_field() ?>
                     <div class="row">
-                        <div class="col-lg-12 col-12">
-                            <div class="form-floating">
-                                <input type="text" name="pseudo" id="pseudo" class="form-control"
-                                    placeholder="pseudo" required="" value="<?php echo $profil->cpt_login; ?>">
-                                <?= validation_show_error('pseudo') ?>
-                                <label for="floatingInput">Pseudo</label>
-                            </div>
-                        </div>
-
                         <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Mot de passe" required="">
                                 <?= validation_show_error('password') ?>
-                                <label for="floatingInput">Mot de passe</label>
+                                <label for="floatingInput">Mot de passe*</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
+                            <div class="form-floating">
+                                <input type="password" name="new_password" id="new_password" class="form-control"
+                                    placeholder="Nouveau mot de passe"required="">
+                                <?= validation_show_error('new_password') ?>
+                                <label for="floatingInput">Nouveau mot de passe*</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
-                                <input type="password" name="password2" id="password2" class="form-control"
-                                    placeholder="Mot de passe" required="">
-                                <?= validation_show_error('password2') ?>
-                                <label for="floatingInput">Confirmation du mot de passe</label>
+                                <input type="password" name="new_password2" id="new_password2" class="form-control"
+                                    placeholder="Confirmation "required="">
+                                <?= validation_show_error('new_password2') ?>
+                                <label for="floatingInput">Confirmation du nouveau mot de passe*</label>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="text" name="nom" id="nom" class="form-control"
-                                    placeholder="Nom" required="" value="<?php echo $profil->pfl_nom; ?>">
+                                    placeholder="Nom" required="" value="<?php echo stripslashes($profil->pfl_nom); ?>">
                                 <?= validation_show_error('nom') ?>
-                                <label for="floatingInput">Nom</label>
+                                <label for="floatingInput">Nom*</label>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="text" name="prenom" id="prenom" class="form-control"
-                                    placeholder="Prenom" required="" value="<?php echo $profil->pfl_prenom; ?>">
+                                    placeholder="Prenom" required="" value="<?php echo stripslashes($profil->pfl_prenom); ?>">
                                 <?= validation_show_error('prenom') ?>
-                                <label for="floatingInput">Prénom</label>
+                                <label for="floatingInput">Prénom*</label>
                             </div>
                         </div>
 
-                        <div class="col-lg-12 col-12 mt-4">
+                        <div class="col-lg-6 col-md-6 col-12 mt-4">
                             <div class="form-floating">
                                 <input type="email" name="email" id="email" class="form-control"
                                     placeholder="Email" required="" value="<?php echo $profil->pfl_email; ?>">
                                 <?= validation_show_error('email') ?>
-                                <label for="floatingInput">Email</label>
+                                <label for="floatingInput">Email*</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-12 mt-4">
-                            <div class="">
-                                <select class="form-select" aria-label="Default select example" name="role" id="role">
-                                    <option selected>Choisir un role</option>
-                                    <option value="O" <?php echo ($profil->pfl_role == 'O') ? 'selected' : ''; ?>>Organisateur</option>
-                                    <option value="A" <?php echo ($profil->pfl_role == 'A') ? 'selected' : ''; ?>>Administrateur</option>
-                                </select>
-                            </div>
-                            <?= validation_show_error('role') ?>
-                        </div>
 
-                        <div class="col-lg-4  ms-auto mt-4">
-                            <button type="submit" class="form-control" name="submit">Envoyer</button>
+                        <div class="col-lg-4 ms-auto mt-4" style="display:flex">
+                            <a href="<?php echo base_url(); ?>index.php/compte/afficher_profil" class="btn btn-primary form-control" name="submit" style="margin-right:5px; text-align:center; width: 50%;">Annuler</a>
+                            <input type="submit" class="btn btn-primary form-control" name="submit" value="Envoyer" style="width: 50%;" />
                         </div>
-
                     </div>
                 </form>
             </div>

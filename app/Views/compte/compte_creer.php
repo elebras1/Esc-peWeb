@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="col-lg-4  ms-auto">
-                            <button type="submit" class="form-control" name="submit">Envoyer</button>
+                            <input type="submit" class="form-control" name="submit" value="Envoyer"/>
                         </div>
 
                     </div>
