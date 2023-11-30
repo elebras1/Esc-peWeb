@@ -25823,6 +25823,10 @@ body:not(.dark-version) .sidenav.bg-transparent .collapse .nav-item .nav-link.ac
   white-space: nowrap;
 }
 
+.image-column {
+  max-width: 20px;
+}
+
 .table.align-items-center td,
 .table.align-items-center th {
   vertical-align: middle;

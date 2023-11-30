@@ -61,7 +61,7 @@ https://templatemo.com/tm-584-pod-talk
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url();?>index.php/scenario/lister">Scénario</a>
+                        <a class="nav-link" href="<?php echo base_url();?>index.php/scenario/afficher_scenarios">Scénario</a>
                     </li>
                 </ul>
 

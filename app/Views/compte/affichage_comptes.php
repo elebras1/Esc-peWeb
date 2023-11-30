@@ -40,7 +40,7 @@
                                 if (!empty($logins) && is_array($logins)) {
                                     foreach ($logins as $pseudo) {
                                         echo "<tr>";
-                                        echo "<td>";
+                                        echo "<td class='align-middle'>";
                                         echo "<div class='d-flex px-2 py-1'>";
                                         echo "<div>";
                                         echo "</div>";
@@ -50,7 +50,7 @@
                                         echo "</div>";
                                         echo "</div>";
                                         echo "</td>";
-                                        echo "<td>";
+                                        echo "<td class='align-middle'>";
                                         echo "<p class='text-xs font-weight-bold mb-0'>" . stripslashes($pseudo["pfl_nom"]) . "</p>";
                                         echo "<p class='text-xs text-secondary mb-0'>" . stripslashes($pseudo["pfl_prenom"]) . "</p>";
                                         echo "</td>";
@@ -61,7 +61,6 @@
                                         echo "</td>";
                                         echo "<td class='align-middle text-center text-sm'>";
                                         echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_validite"] . "</span>";
-                                        echo "</td>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }

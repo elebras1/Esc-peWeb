@@ -121,11 +121,24 @@ class Db_model extends Model
     /* fonctions de gestion des scenarios */
     public function get_all_scenarios()
     {
+        $resultat = $this->db->query("SELECT * FROM t_scenario_snr;");
+        return $resultat->getResultArray();
+    }
+
+    public function get_number_scenario()
+    {
+        $resultat = $this->db->query("SELECT count(snr_id) FROM t_scenario_snr;");
+        return $resultat->getResultArray();
+    }
+    
+    public function get_all_scenarios_activate()
+    {
         $resultat = $this->db->query
         (
-            "SELECT DISTINCT cpt_login, snr_code, snr_intitule, snr_image
-            FROM t_compte_cpt JOIN t_scenario_snr USING(cpt_id)
-            WHERE snr_statut = 'A';"
+            "SELECT snr_id, snr_code, snr_intitule, snr_image, cpt_login, COUNT(etp_id) AS nb_etape
+            FROM t_compte_cpt RIGHT JOIN t_scenario_snr USING(cpt_id) LEFT JOIN t_etape_etp USING(snr_id)
+            WHERE snr_statut = 'A'
+            GROUP BY snr_id;"
         );
         return $resultat->getResultArray();
     }

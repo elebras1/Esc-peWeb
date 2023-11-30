@@ -11,6 +11,7 @@ class Compte extends BaseController
         helper('form');
         $this->model = model(Db_model::class);
     }
+    
     public function lister()
     {
         $session=session();

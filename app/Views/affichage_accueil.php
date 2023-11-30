@@ -9,7 +9,7 @@
                         Jouez à de nombreux scénarios sur la culture générale.
                     </p>
                     
-                    <a href="<?php echo base_url();?>index.php/scenario/lister" class="btn custom-btn smoothscroll mt-3">Commencer un scénario</a>
+                    <a href="<?php echo base_url();?>index.php/scenario/afficher_scenarios" class="btn custom-btn smoothscroll mt-3">Commencer un scénario</a>
                     <br>
                     <br>
                     <br>
