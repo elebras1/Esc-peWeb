@@ -60,7 +60,7 @@ class Db_model extends Model
     public function connect_compte($login, $mot_de_passe)
     {
         $mot_de_passe = $mot_de_passe . $this->salt;
-        $sql="SELECT cpt_login, cpt_mot_de_passe
+        $sql = "SELECT cpt_login, cpt_mot_de_passe
             FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id)
             WHERE cpt_login='".$login."'
             AND cpt_mot_de_passe = SHA2('".$mot_de_passe."', 512)
@@ -77,6 +77,19 @@ class Db_model extends Model
         }
     }
 
+    public function is_compte_login_exist($login)
+    {
+        $resultat = $this->db->query("SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = '".$login."';");
+        if($resultat->getNumRows() > 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
     /* fonctions de gestion des profils*/
     public function set_profil($saisie, $cpt_id)
     {
@@ -85,7 +98,8 @@ class Db_model extends Model
         $prenom = addslashes($saisie['prenom']);
         $email = $saisie['email'];
         $role = $saisie['role'];
-        $sql = "INSERT INTO t_profil_pfl VALUES(".$cpt_id.",'".$nom."', '".$prenom."', '".$email."', CURDATE(), '".$role."', 'D')";
+        $validite = $saisie['validite'];
+        $sql = "INSERT INTO t_profil_pfl VALUES(".$cpt_id.",'".$nom."', '".$prenom."', '".$email."', CURDATE(), '".$role."', '".$validite."')";
         return $this->db->query($sql);
     }
 
@@ -159,6 +173,7 @@ class Db_model extends Model
         return $resultat->getResultArray();
     }
 
+    /* fonctions de gestion des etapes */
     public function get_first_etape($code, $difficulte)
     {
         $resultat = $this->db->query
@@ -171,5 +186,11 @@ class Db_model extends Model
             AND etp_numero = 1;"
         );
         return $resultat->getRow();
+    }
+
+    public function get_all_etape_of_scenario($id) 
+    {
+        $resultat = $this->db->query("SELECT * FROM t_etape_etp WHERE snr_id =".$id.";");
+        return $resultat->getResultArray();
     }
 }

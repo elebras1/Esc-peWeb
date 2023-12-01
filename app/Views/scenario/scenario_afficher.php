@@ -22,6 +22,14 @@
                         echo "<div><img src='".base_url()."ressources/". $scenario->snr_image."' style='width : 80px; height : 80px; border-radius: 10%;'/>";
                         echo "<span class='fs-3 px-4' >". $scenario->snr_intitule . "</span></div>";
                         echo "<span class='fs-3 my-4'>". $scenario->snr_description . "</span>";
+                        if (!empty($etapes) && is_array($etapes)) {
+                            foreach($etapes as $etape) {
+                                echo '<p class="fs-3">' . $etape['etp_numero']. ' - ' . $etape['etp_intitule'] . '</p>';
+                            }
+                        }
+                        else {
+                            echo "<p class='fs-4'>Aucune étape</p>";
+                        }
                     } else {
                         echo "<p class='fs-4'>Scenario non disponible</p>";
                         echo $scenario;

@@ -145,6 +145,9 @@ class Compte extends BaseController
                     ],
                     'role' => [
                         'required' => 'Veuillez selectionner un role.'
+                    ],
+                    'validite' => [
+                        'required' => 'Veuillez selectionner une validite.'
                     ]
                 ];
 
@@ -155,29 +158,35 @@ class Compte extends BaseController
                     'nom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-ZÀ-ÿç\'\s]+$/]',
                     'prenom' => 'required|max_length[80]|min_length[2]|regex_match[/^[a-zA-ZÀ-ÿç\'\s]+$/]',
                     'email' => 'required|max_length[200]|min_length[8]|valid_email',
-                    'role' => 'required'
+                    'role' => 'required',
+                    'validite' => 'required'
                 ], $messages)) {
                     // La validation du formulaire a échoué, retour au formulaire !
-                    return view('templates/haut', ['titre' => 'Créer un compte'])
+                    return view('templates/haut2', ['titre' => 'Créer un compte'])
                     . view('compte/compte_creer')
-                    . view('templates/bas');
+                    . view('templates/bas2');
                 }
                 // La validation du formulaire a réussi, traitement du formulaire
                 $recuperation = $this->validator->getValidated();
-                
-                $this->model->set_compte($recuperation);
-                $compte = $this->model->get_compte($recuperation['pseudo']);
-                $this->model->set_profil($recuperation, $compte->cpt_id);
-                $data['le_compte']=$recuperation['pseudo'];
-                $data['le_message']="Nouveau nombre de comptes : ";
-                //Appel de la fonction créée dans le précédent tutoriel :
-                $data['total']=$this->model->get_number_compte();
-                return redirect()->to('/compte/lister');
+                if(!$this->model->is_compte_login_exist($recuperation['pseudo']))
+                {
+                    $this->model->set_compte($recuperation);
+                    $compte = $this->model->get_compte($recuperation['pseudo']);
+                    $this->model->set_profil($recuperation, $compte->cpt_id);
+
+                    return redirect()->to('/compte/lister');
+                }
+                else {
+                    $data['erreur'] = 'Le login choisis existe déjà';
+                    return view('templates/haut2', ['titre' => 'Créer un compte', 'erreur' => 'Le pseudo choisi existe déjà'])
+                    . view('compte/compte_creer', $recuperation)
+                    . view('templates/bas2');
+                }
             }
             // L’utilisateur veut afficher le formulaire pour créer un compte
-            return view('templates/haut', ['titre' => 'Créer un compte'])
+            return view('templates/haut2', ['titre' => 'Créer un compte'])
             . view('compte/compte_creer')
-            . view('templates/bas');
+            . view('templates/bas2');
         }
         else 
         {

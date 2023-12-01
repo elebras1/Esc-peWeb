@@ -73,6 +73,7 @@ class Scenario extends BaseController
             }
 
             $data['scenario'] = $this->model->get_scenario($code);
+            $data['etapes'] = $this->model->get_all_etape_of_scenario($data['scenario']->snr_id);
             $data['titre'] = 'Scenario';
 
             return view('templates/haut2', $data)
