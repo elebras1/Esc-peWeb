@@ -58,10 +58,12 @@
         <?php
           if (session()->role == 'A')
           {
-            echo ('<span class="ms-1 font-weight-bold text-white">EscapeWeb Administrateur</span>');
+            echo ('<div><span class="ms-1 font-weight-bold text-white">EscapeWeb</span>');
+            echo ('<span class="ms-1 font-weight-bold text-white">Administrateur</span></div>');
           }
           elseif (session()->role == 'O') {
-            echo ('<span class="ms-1 font-weight-bold text-white">EscapeWeb Organisateur</span>');
+            echo ('<div><span class="ms-1 font-weight-bold text-white">EscapeWeb</span>');
+            echo ('<span class="ms-1 font-weight-bold text-white">Organisateur</span></div>');
           }
         ?>
       </a>
