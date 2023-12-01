@@ -119,6 +119,12 @@ class Db_model extends Model
     }
 
     /* fonctions de gestion des scenarios */
+    public function get_scenario($code)
+    {
+        $resultat = $this->db->query("SELECT * FROM t_scenario_snr WHERE snr_code = '".$code."'");
+        return $resultat->getRow();
+    }
+    
     public function get_all_scenarios()
     {
         $resultat = $this->db->query("SELECT * FROM t_scenario_snr;");
@@ -135,9 +141,19 @@ class Db_model extends Model
     {
         $resultat = $this->db->query
         (
+            "SELECT snr_id, snr_code, snr_intitule, snr_image, cpt_login
+            FROM t_compte_cpt RIGHT JOIN t_scenario_snr USING(cpt_id) LEFT JOIN t_etape_etp USING(snr_id)
+            GROUP BY snr_id;"
+        );
+        return $resultat->getResultArray();
+    }
+
+    public function get_all_scenarios_nb_etapes()
+    {
+        $resultat = $this->db->query
+        (
             "SELECT snr_id, snr_code, snr_intitule, snr_image, cpt_login, COUNT(etp_id) AS nb_etape
             FROM t_compte_cpt RIGHT JOIN t_scenario_snr USING(cpt_id) LEFT JOIN t_etape_etp USING(snr_id)
-            WHERE snr_statut = 'A'
             GROUP BY snr_id;"
         );
         return $resultat->getResultArray();

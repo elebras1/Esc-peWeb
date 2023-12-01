@@ -60,7 +60,7 @@
                                         echo "</td>";
                                         if($session->get('user') != $scenario["cpt_login"]) {
                                             echo "<td class='align-middle text-center text-sm'>";
-                                            echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/oeil-black.png' style='width : 10px;'/></a>";
+                                            echo "<a href='".base_url()."index.php/scenario/afficher_scenario/". $scenario["snr_code"] ."'><img src='".base_url()."bootstrap2/assets/img/oeil-black.png' style='width : 10px;'/></a>";
                                             echo "</td>";
                                             echo "<td class='align-middle text-center text-sm'>";
                                             echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/copy-black.png' style='width : 10px;'/></a>";
@@ -81,7 +81,7 @@
                                         }
                                         elseif ($session->get('user') == $scenario["cpt_login"]) {
                                             echo "<td class='align-middle text-center text-sm'>";
-                                            echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/oeil-black.png' style='width : 10px;'/></a>";
+                                            echo "<a href='".base_url()."index.php/scenario/afficher_scenario/". $scenario["snr_code"] ."'><img src='".base_url()."bootstrap2/assets/img/oeil-black.png' style='width : 10px;'/></a>";
                                             echo "</td>";
                                             echo "<td class='align-middle text-center text-sm'>";
                                             echo "";

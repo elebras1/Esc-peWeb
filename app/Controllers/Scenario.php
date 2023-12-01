@@ -46,11 +46,37 @@ class Scenario extends BaseController
                 return redirect()->to('/compte/afficher_profil');
             }
             $data['titre'] = "Scénarios";
-            $data['scenarios'] = $this->model->get_all_scenarios_activate();
+            $data['scenarios'] = $this->model->get_all_scenarios_nb_etapes();
             $data['nb_scenarios'] = $this->model->get_number_scenario();
 
             return view('templates/haut2', $data)
             .view('scenario/scenario_lister')
+            .view('templates/bas2');
+        }
+        else
+        {
+            return redirect()->to('compte/connecter');
+        }
+    }
+
+    public  function afficher_scenario($code = 0) {
+        $session=session();
+        if ($session->has('user'))
+        {
+            if($session->role != 'O')
+            {
+                return redirect()->to('/compte/afficher_profil');
+            }
+            
+            if($code == 0) {
+                redirect()->to('scenario/scenario_lister');
+            }
+
+            $data['scenario'] = $this->model->get_scenario($code);
+            $data['titre'] = 'Scenario';
+
+            return view('templates/haut2', $data)
+            .view('scenario/scenario_afficher')
             .view('templates/bas2');
         }
         else
