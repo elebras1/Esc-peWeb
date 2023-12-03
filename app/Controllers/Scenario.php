@@ -23,7 +23,7 @@ class Scenario extends BaseController
             . view('templates/bas');
     }
 
-    public function afficher_1ere_etape($code, $difficulte = 0)
+    public function afficher_1ere_etape($code = 0, $difficulte = 0)
     {
         if (empty($code) || $difficulte == 0 || $difficulte > 3)
         {
@@ -75,6 +75,11 @@ class Scenario extends BaseController
             }
 
             $data['scenario'] = $this->model->get_scenario($code);
+            if(empty($data['scenario']))
+            {
+                return redirect()->to('/scenario/lister');
+            }
+
             $data['etapes'] = $this->model->get_all_etape_of_scenario($data['scenario']->snr_id);
             $data['titre'] = 'Scenario';
 
