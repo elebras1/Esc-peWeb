@@ -22,7 +22,7 @@
                 <?= session()->getFlashdata('error') ?>
                 <?php
                 // Création d’un formulaire qui pointe vers l’URL de base + /compte/modifier
-                echo form_open('/compte/modifier', array('class' => 'custom-form contact-form')); ?>
+                echo form_open('/compte/modifier'); ?>
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12 mt-4">

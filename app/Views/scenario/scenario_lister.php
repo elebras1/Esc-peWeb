@@ -17,7 +17,7 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                         <h6 class="text-white text-capitalize ps-3"><?php echo $titre; ?></h6>
-                        <a href="" class="btn custom-btn">
+                        <a href="<?php echo base_url()?>index.php/scenario/creer" class="btn custom-btn">
                             <img src="<?php echo base_url()?>bootstrap2/assets/img/plus_white.png" style="width: 15px;"/>
                         </a>
                     </div>

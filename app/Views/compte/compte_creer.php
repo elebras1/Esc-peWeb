@@ -22,7 +22,7 @@
                 <?= session()->getFlashdata('error') ?>
                 <?php
                 // Création d’un formulaire qui pointe vers l’URL de base + /compte/creer
-                echo form_open('/compte/creer', array('class' => 'custom-form contact-form')); ?>
+                echo form_open('/compte/creer'); ?>
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-lg-12 col-12">

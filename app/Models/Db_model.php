@@ -173,6 +173,19 @@ class Db_model extends Model
         return $resultat->getResultArray();
     }
 
+    public function set_scenario($saisie)
+    {
+        $code = $saisie['code'];
+        $intitule = addslashes($saisie['intitule']);
+        $description = addslashes($saisie['description']);
+        $image = $saisie['fichier'];
+        $statut = $saisie['statut'];
+        $id = $saisie['id'];
+        $sql = "INSERT INTO t_scenario_snr (snr_code, snr_intitule, snr_description, snr_image, snr_statut, cpt_id) 
+                VALUES ('".$code."', '".$intitule."', '".$description."', '".$image."', '".$statut."', ".$id.")";
+        return $this->db->query($sql);
+    }
+
     /* fonctions de gestion des etapes */
     public function get_first_etape($code, $difficulte)
     {
