@@ -183,4 +183,37 @@ class Scenario extends BaseController
             return redirect()->to('compte/connecter');
         }
     }
+
+    public function supprimer($code = null) {
+        $session = session();
+        
+        if (!$session->has('user')) {
+            return redirect()->to('compte/connecter');
+        }
+    
+        if ($session->role != 'O') {
+            return redirect()->to('/scenario/lister');
+        }
+        
+        //traitement post
+        if ($this->request->getMethod() == 'post') {
+            $recuperation = $this->request->getPost('submit_button');
+    
+            if ($recuperation == 1) {
+                $this->model->delete_indice_by_scenario($code);
+                $this->model->delete_etape_by_scenario($code);
+                $this->model->delete_partie_by_scenario($code);
+                $this->model->delete_scenario($code);
+            }
+    
+            return redirect()->to('/scenario/lister');
+        }
+    
+        // L’utilisateur veut afficher le formulaire pour supprimer un scénario
+        return view('templates/haut2', ['titre' => 'Supprimer un scénario', 'code' => $code])
+            . view('scenario/scenario_supprimer')
+            . view('templates/bas2');
+    }
+    
+
 }

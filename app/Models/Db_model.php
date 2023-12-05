@@ -168,7 +168,8 @@ class Db_model extends Model
         (
             "SELECT snr_id, snr_code, snr_intitule, snr_image, cpt_login, COUNT(etp_id) AS nb_etape
             FROM t_compte_cpt RIGHT JOIN t_scenario_snr USING(cpt_id) LEFT JOIN t_etape_etp USING(snr_id)
-            GROUP BY snr_id;"
+            GROUP BY snr_id
+            ORDER BY snr_statut, snr_id;"
         );
         return $resultat->getResultArray();
     }
@@ -183,6 +184,12 @@ class Db_model extends Model
         $id = $saisie['id'];
         $sql = "INSERT INTO t_scenario_snr (snr_code, snr_intitule, snr_description, snr_image, snr_statut, cpt_id) 
                 VALUES ('".$code."', '".$intitule."', '".$description."', '".$image."', '".$statut."', ".$id.")";
+        return $this->db->query($sql);
+    }
+
+    public function delete_scenario($code)
+    {
+        $sql = "DELETE FROM t_scenario_snr WHERE snr_code='".$code."'";
         return $this->db->query($sql);
     }
 
@@ -205,5 +212,21 @@ class Db_model extends Model
     {
         $resultat = $this->db->query("SELECT * FROM t_etape_etp WHERE snr_id =".$id.";");
         return $resultat->getResultArray();
+    }
+
+    public function delete_etape_by_scenario($code) {
+        $sql = "DELETE FROM t_etape_etp WHERE etp_id IN (SELECT etp_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) WHERE snr_code = '".$code."')";
+        return $this->db->query($sql);
+    }
+
+    public function delete_indice_by_scenario($code) {
+        $sql = "DELETE FROM t_indice_idc WHERE idc_id IN 
+                (SELECT idc_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) JOIN t_indice_idc USING(etp_id) WHERE snr_code = '".$code."')";
+        return $this->db->query($sql);
+    }
+
+    public function delete_partie_by_scenario($code) {
+        $sql = "DELETE FROM t_partie_prt WHERE snr_id IN (SELECT snr_id FROM t_scenario_snr JOIN t_partie_prt USING(snr_id) WHERE snr_code = '".$code."')";
+        return $this->db->query($sql);
     }
 }

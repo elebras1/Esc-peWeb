@@ -93,7 +93,7 @@
                                             echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/padlock-black.png' style='width : 10px;'/></a>";
                                             echo "</td>";
                                             echo "<td class='align-middle text-center text-sm'>";
-                                            echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/cross-black.png' style='width : 10px;'/></a>";
+                                            echo "<a href='".base_url()."index.php/scenario/supprimer/". $scenario["snr_code"] ."'><img src='".base_url()."bootstrap2/assets/img/cross-black.png' style='width : 10px;'/></a>";
                                             echo "</td>";
                                             echo "<td class='align-middle text-center text-sm'>";
                                             echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/circular-arrow.png' style='width : 10px;'/></a>";
