@@ -90,6 +90,19 @@ class Db_model extends Model
         }
     }
 
+    public function is_author_of_scenario($login, $code)
+    {
+        $resultat = $this->db->query("SELECT snr_id FROM t_compte_cpt JOIN t_scenario_snr USING(cpt_id) WHERE cpt_login = '".$login."' AND snr_code = '".$code."';");
+        if($resultat->getNumRows() > 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
     /* fonctions de gestion des profils*/
     public function set_profil($saisie, $cpt_id)
     {
@@ -219,12 +232,14 @@ class Db_model extends Model
         return $this->db->query($sql);
     }
 
+    /* fonctions de gestion des indices */
     public function delete_indice_by_scenario($code) {
         $sql = "DELETE FROM t_indice_idc WHERE idc_id IN 
                 (SELECT idc_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) JOIN t_indice_idc USING(etp_id) WHERE snr_code = '".$code."')";
         return $this->db->query($sql);
     }
 
+    /* fonctions de gestion des parties */
     public function delete_partie_by_scenario($code) {
         $sql = "DELETE FROM t_partie_prt WHERE snr_id IN (SELECT snr_id FROM t_scenario_snr JOIN t_partie_prt USING(snr_id) WHERE snr_code = '".$code."')";
         return $this->db->query($sql);

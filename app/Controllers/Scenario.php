@@ -195,6 +195,10 @@ class Scenario extends BaseController
             return redirect()->to('/scenario/lister');
         }
         
+        if (!$this->model->is_author_of_scenario($session->get('user'), $code)) {
+            return redirect()->to('/scenario/lister');
+        }
+        
         //traitement post
         if ($this->request->getMethod() == 'post') {
             $recuperation = $this->request->getPost('submit_button');
@@ -214,6 +218,4 @@ class Scenario extends BaseController
             . view('scenario/scenario_supprimer')
             . view('templates/bas2');
     }
-    
-
 }
