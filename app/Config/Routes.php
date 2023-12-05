@@ -25,6 +25,8 @@ $routes->get('scenario/afficher_1ere_etape/', [Scenario::class, 'afficher_1ere_e
 $routes->get('scenario/supprimer/(:any)/', [Scenario::class, 'supprimer']);
 $routes->get('scenario/supprimer/', [Scenario::class, 'supprimer']);
 $routes->post('scenario/supprimer/(:any)', [Scenario::class, 'supprimer']);
+$routes->get('scenario/franchir_etape/(:any)/(:num)', [Scenario::class, 'franchir_etape']);
+$routes->post('scenario/franchir_etape/(:any)/(:num)', [Scenario::class, 'franchir_etape']);
 //Compte routes
 $routes->get('compte/afficher_accueil', [Compte::class, 'afficher_accueil']);
 $routes->get('compte/afficher_profil', [Compte::class, 'afficher_profil']); 

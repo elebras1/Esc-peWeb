@@ -212,10 +212,25 @@ class Scenario extends BaseController
     
             return redirect()->to('/scenario/lister');
         }
-    
         // L’utilisateur veut afficher le formulaire pour supprimer un scénario
         return view('templates/haut2', ['titre' => 'Supprimer un scénario', 'code' => $code])
             . view('scenario/scenario_supprimer')
             . view('templates/bas2');
     }
+
+    public function franchir_etape($code = 0, $difficulte = 0)
+    {
+        if (empty($code) || $difficulte == 0 || $difficulte > 3)
+        {
+            return redirect()->to('/scenario/afficher_scenarios');
+        }
+        else{
+            $data['titre'] = 'Etape :';
+            $data['etape'] = $this->model->get_etape($code, $difficulte);
+            return view('templates/haut', $data)
+            . view('etape/franchir_etape')
+            . view('templates/bas');
+        }
+    }
+
 }

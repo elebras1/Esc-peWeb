@@ -48,9 +48,6 @@ if (!isset($etape)) {
                                     ?>
                                 </p>
                                 <br>
-                                <?php
-                                echo form_open('/scenario/franchir_etape/'); ?>
-                                <?= csrf_field() ?>
                                 <div class="col-lg-12 col-12">
                                     <div class="form-floating">
                                         <input type="text" name="reponse" id="reponse" class="form-control"

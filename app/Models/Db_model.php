@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 class Db_model extends Model
@@ -22,7 +23,7 @@ class Db_model extends Model
         return $this->salt;
     }
 
-    /* fonctions de gestion des comptes*/ 
+    /* fonctions de gestion des comptes*/
     public function get_all_compte()
     {
         $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id) ORDER BY pfl_validite, pfl_date_inscription;");
@@ -31,7 +32,7 @@ class Db_model extends Model
 
     public function get_compte($login)
     {
-        $resultat = $this->db->query("SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = '".$login."'");
+        $resultat = $this->db->query("SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = '" . $login . "'");
         return $resultat->getRow();
     }
 
@@ -40,20 +41,20 @@ class Db_model extends Model
         $resultat = $this->db->query("SELECT count(cpt_id) AS number FROM t_compte_cpt;");
         return $resultat->getRow();
     }
-    
+
     public function set_compte($saisie)
     {
         //Récuparation (+ traitement si nécessaire) des données du formulaire
-        $login = $saisie['pseudo'];
-        $mot_de_passe = $saisie['password'] . $this->salt;
-        $sql = "INSERT INTO t_compte_cpt(cpt_login, cpt_mot_de_passe) VALUES('".$login."',SHA2('".$mot_de_passe."', 512))";
+        $login = htmlspecialchars($saisie['pseudo']);
+        $mot_de_passe = htmlspecialchars($saisie['password'] . $this->salt);
+        $sql = "INSERT INTO t_compte_cpt(cpt_login, cpt_mot_de_passe) VALUES('" . $login . "',SHA2('" . $mot_de_passe . "', 512))";
         return $this->db->query($sql);
     }
 
     public function update_compte($saisie, $cpt_id)
     {
-        $mot_de_passe = $saisie['new_password'] . $this->salt;;
-        $sql = "UPDATE t_compte_cpt SET cpt_mot_de_passe = SHA2('".$mot_de_passe."', 512) WHERE cpt_id = ".$cpt_id.";";
+        $mot_de_passe = htmlspecialchars($saisie['new_password'] . $this->salt);
+        $sql = "UPDATE t_compte_cpt SET cpt_mot_de_passe = SHA2('" . $mot_de_passe . "', 512) WHERE cpt_id = " . $cpt_id . ";";
         return $this->db->query($sql);
     }
 
@@ -62,43 +63,34 @@ class Db_model extends Model
         $mot_de_passe = $mot_de_passe . $this->salt;
         $sql = "SELECT cpt_login, cpt_mot_de_passe
             FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id)
-            WHERE cpt_login='".$login."'
-            AND cpt_mot_de_passe = SHA2('".$mot_de_passe."', 512)
+            WHERE cpt_login='" . $login . "'
+            AND cpt_mot_de_passe = SHA2('" . $mot_de_passe . "', 512)
             AND pfl_validite = 'A'";
-        $resultat=$this->db->query($sql);
+        $resultat = $this->db->query($sql);
 
-        if($resultat->getNumRows() > 0)
-        {
+        if ($resultat->getNumRows() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
     public function is_compte_login_exist($login)
     {
-        $resultat = $this->db->query("SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = '".$login."';");
-        if($resultat->getNumRows() > 0)
-        {
+        $resultat = $this->db->query("SELECT cpt_id FROM t_compte_cpt WHERE cpt_login = '" . $login . "';");
+        if ($resultat->getNumRows() > 0) {
             return true;
-        }
-        else 
-        {
+        } else {
             return false;
         }
     }
 
     public function is_author_of_scenario($login, $code)
     {
-        $resultat = $this->db->query("SELECT snr_id FROM t_compte_cpt JOIN t_scenario_snr USING(cpt_id) WHERE cpt_login = '".$login."' AND snr_code = '".$code."';");
-        if($resultat->getNumRows() > 0)
-        {
+        $resultat = $this->db->query("SELECT snr_id FROM t_compte_cpt JOIN t_scenario_snr USING(cpt_id) WHERE cpt_login = '" . $login . "' AND snr_code = '" . $code . "';");
+        if ($resultat->getNumRows() > 0) {
             return true;
-        }
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -107,28 +99,28 @@ class Db_model extends Model
     public function set_profil($saisie, $cpt_id)
     {
         //Récuparation (+ traitement si nécessaire) des données du formulaire
-        $nom = addslashes($saisie['nom']);
-        $prenom = addslashes($saisie['prenom']);
-        $email = $saisie['email'];
-        $role = $saisie['role'];
+        $nom = htmlspecialchars(addslashes($saisie['nom']));
+        $prenom = htmlspecialchars(addslashes($saisie['prenom']));
+        $email = htmlspecialchars($saisie['email']);
+        $role = htmlspecialchars($saisie['role']);
         $validite = $saisie['validite'];
-        $sql = "INSERT INTO t_profil_pfl VALUES(".$cpt_id.",'".$nom."', '".$prenom."', '".$email."', CURDATE(), '".$role."', '".$validite."')";
+        $sql = "INSERT INTO t_profil_pfl VALUES(" . $cpt_id . ",'" . $nom . "', '" . $prenom . "', '" . $email . "', CURDATE(), '" . $role . "', '" . $validite . "')";
         return $this->db->query($sql);
     }
 
     public function get_profil($login)
     {
-        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id) WHERE cpt_login = '".$login."';");
+        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING(cpt_id) WHERE cpt_login = '" . $login . "';");
         return $resultat->getRow();
     }
 
     public function update_profil($saisie, $cpt_id)
     {
         //Récuparation (+ traitement si nécessaire) des données du formulaire
-        $nom = addslashes($saisie['nom']);
-        $prenom = addslashes($saisie['prenom']);
-        $email = $saisie['email'];
-        $sql = "UPDATE t_profil_pfl SET pfl_prenom = '".$prenom."', pfl_nom = '".$nom."', pfl_email = '".$email."' WHERE cpt_id = ".$cpt_id.";";
+        $nom = htmlspecialchars(addslashes($saisie['nom']));
+        $prenom = htmlspecialchars(addslashes($saisie['prenom']));
+        $email = htmlspecialchars($saisie['email']);
+        $sql = "UPDATE t_profil_pfl SET pfl_prenom = '" . $prenom . "', pfl_nom = '" . $nom . "', pfl_email = '" . $email . "' WHERE cpt_id = " . $cpt_id . ";";
         return $this->db->query($sql);
     }
 
@@ -141,17 +133,17 @@ class Db_model extends Model
 
     public function get_actualite($numero)
     {
-        $resultat = $this->db->query("SELECT * FROM t_actualite_act WHERE act_id=".$numero.";");
+        $resultat = $this->db->query("SELECT * FROM t_actualite_act WHERE act_id=" . $numero . ";");
         return $resultat->getRow();
     }
 
     /* fonctions de gestion des scenarios */
     public function get_scenario($code)
     {
-        $resultat = $this->db->query("SELECT * FROM t_scenario_snr WHERE snr_code = '".$code."'");
+        $resultat = $this->db->query("SELECT * FROM t_scenario_snr WHERE snr_code = '" . $code . "'");
         return $resultat->getRow();
     }
-    
+
     public function get_all_scenarios()
     {
         $resultat = $this->db->query("SELECT * FROM t_scenario_snr;");
@@ -163,7 +155,7 @@ class Db_model extends Model
         $resultat = $this->db->query("SELECT count(snr_id) FROM t_scenario_snr;");
         return $resultat->getResultArray();
     }
-    
+
     public function get_all_scenarios_activate()
     {
         $resultat = $this->db->query
@@ -189,20 +181,20 @@ class Db_model extends Model
 
     public function set_scenario($saisie)
     {
-        $code = $saisie['code'];
+        $code = htmlspecialchars($saisie['code']);
         $intitule = addslashes($saisie['intitule']);
         $description = addslashes($saisie['description']);
-        $image = $saisie['fichier'];
-        $statut = $saisie['statut'];
-        $id = $saisie['id'];
+        $image = htmlspecialchars($saisie['fichier']);
+        $statut = htmlspecialchars($saisie['statut']);
+        $id = htmlspecialchars($saisie['id']);
         $sql = "INSERT INTO t_scenario_snr (snr_code, snr_intitule, snr_description, snr_image, snr_statut, cpt_id) 
-                VALUES ('".$code."', '".$intitule."', '".$description."', '".$image."', '".$statut."', ".$id.")";
+                VALUES ('" . $code . "', '" . $intitule . "', '" . $description . "', '" . $image . "', '" . $statut . "', " . $id . ")";
         return $this->db->query($sql);
     }
 
     public function delete_scenario($code)
     {
-        $sql = "DELETE FROM t_scenario_snr WHERE snr_code='".$code."'";
+        $sql = "DELETE FROM t_scenario_snr WHERE snr_code='" . $code . "'";
         return $this->db->query($sql);
     }
 
@@ -213,35 +205,48 @@ class Db_model extends Model
         (
             "SELECT *
             FROM t_scenario_snr JOIN t_etape_etp USING(snr_id)
-            LEFT JOIN t_indice_idc ON t_etape_etp.etp_id = t_indice_idc.etp_id AND idc_difficulte = ".$difficulte."
+            LEFT JOIN t_indice_idc ON t_etape_etp.etp_id = t_indice_idc.etp_id AND idc_difficulte = " . $difficulte . "
             JOIN t_ressource_rsc USING(rsc_id)
-            WHERE snr_code = '".$code."'
+            WHERE snr_code = '" . $code . "'
             AND etp_numero = 1;"
         );
         return $resultat->getRow();
     }
 
-    public function get_all_etape_of_scenario($id) 
+    public function get_etape($code, $difficulte) {
+        $resultat = $this->db->query("SELECT * FROM t_etape_etp JOIN t_indice_idc USING(etp_id) JOIN t_ressource_rsc USING(rsc_id) WHERE etp_code = '".$code."' AND idc_difficulte = '".$difficulte."'");
+        return $resultat->getRow();
+    }
+
+    public function next_etape($code, $difficulte) {
+        $resultat = $this->db->query("SELECT * FROM t_etape_etp JOIN t_indice_idc USING(etp_id) JOIN t_ressource_rsc USING(rsc_id) WHERE etp_code = '".$code."' AND idc_difficulte = '".$difficulte."'");
+        return $resultat->getRow();
+    }
+
+    public function get_all_etape_of_scenario($id)
     {
-        $resultat = $this->db->query("SELECT * FROM t_etape_etp WHERE snr_id =".$id.";");
+        $resultat = $this->db->query("SELECT * FROM t_etape_etp WHERE snr_id =" . $id . ";");
         return $resultat->getResultArray();
     }
 
-    public function delete_etape_by_scenario($code) {
-        $sql = "DELETE FROM t_etape_etp WHERE etp_id IN (SELECT etp_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) WHERE snr_code = '".$code."')";
+    public function delete_etape_by_scenario($code)
+    {
+        $sql = "DELETE FROM t_etape_etp WHERE etp_id IN (SELECT etp_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
     }
 
     /* fonctions de gestion des indices */
-    public function delete_indice_by_scenario($code) {
+    public function delete_indice_by_scenario($code)
+    {
         $sql = "DELETE FROM t_indice_idc WHERE idc_id IN 
-                (SELECT idc_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) JOIN t_indice_idc USING(etp_id) WHERE snr_code = '".$code."')";
+                (SELECT idc_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) JOIN t_indice_idc USING(etp_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
     }
 
     /* fonctions de gestion des parties */
-    public function delete_partie_by_scenario($code) {
-        $sql = "DELETE FROM t_partie_prt WHERE snr_id IN (SELECT snr_id FROM t_scenario_snr JOIN t_partie_prt USING(snr_id) WHERE snr_code = '".$code."')";
+    public function delete_partie_by_scenario($code)
+    {
+        $sql = "DELETE FROM t_partie_prt WHERE snr_id IN (SELECT snr_id FROM t_scenario_snr JOIN t_partie_prt USING(snr_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
     }
 }
