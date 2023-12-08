@@ -25,6 +25,8 @@
                         if (!empty($etapes) && is_array($etapes)) {
                             foreach($etapes as $etape) {
                                 echo '<p class="fs-3">' . $etape['etp_numero']. ' - ' . $etape['etp_intitule'] . '</p>';
+                                echo '<span class="font-weight-light" style="margin-left:40px;">Question : ' . $etape['etp_question'] . '</span>';
+                                echo '<span class="font-weight-light" style="margin-left:40px;">Réponse : ' . $etape['etp_reponse'] . '</span>';
                             }
                         }
                         else {

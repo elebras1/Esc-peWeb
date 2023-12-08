@@ -95,7 +95,7 @@ class Scenario extends BaseController
         }
     }
 
-    public  function afficher_scenario($code = 0) {
+    public  function afficher_scenario($code = null) {
         $session=session();
         if ($session->has('user'))
         {
@@ -104,7 +104,7 @@ class Scenario extends BaseController
                 return redirect()->to('/compte/afficher_profil');
             }
             
-            if($code == 0) {
+            if(empty($code)) {
                 redirect()->to('scenario/scenario_lister');
             }
 
