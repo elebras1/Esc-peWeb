@@ -214,12 +214,20 @@ class Db_model extends Model
     }
 
     public function get_etape($code, $difficulte) {
-        $resultat = $this->db->query("SELECT * FROM t_etape_etp JOIN t_indice_idc USING(etp_id) JOIN t_ressource_rsc USING(rsc_id) WHERE etp_code = '".$code."' AND idc_difficulte = '".$difficulte."'");
+        $resultat = $this->db->query(
+            "SELECT *
+            FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) JOIN t_ressource_rsc USING(rsc_id)
+            LEFT JOIN t_indice_idc ON t_etape_etp.etp_id = t_indice_idc.etp_id AND idc_difficulte = " . $difficulte . "
+            WHERE etp_code = '" . $code . "'"
+        );
         return $resultat->getRow();
     }
 
-    public function next_etape($code, $difficulte) {
-        $resultat = $this->db->query("SELECT * FROM t_etape_etp JOIN t_indice_idc USING(etp_id) JOIN t_ressource_rsc USING(rsc_id) WHERE etp_code = '".$code."' AND idc_difficulte = '".$difficulte."'");
+    public function get_next_etape($snr_code, $etp_numero) {
+        $resultat = $this->db->query("SELECT etp_code FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) WHERE snr_code = '".$snr_code."' AND etp_numero = '".$etp_numero."'");
+        if ($resultat->getNumRows() == null) {
+            return null;
+        }
         return $resultat->getRow();
     }
 
@@ -233,6 +241,23 @@ class Db_model extends Model
     {
         $sql = "DELETE FROM t_etape_etp WHERE etp_id IN (SELECT etp_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
+    }
+
+    public function check_answer($code, $reponse)
+    {
+        $resultat = $this->db->query("SELECT * FROM t_etape_etp WHERE etp_code = '".$code."' AND etp_reponse = '".$reponse."'");
+
+        if ($resultat->getNumRows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_numero_by_code($code)
+    {
+        $resultat = $this->db->query("SELECT etp_numero FROM t_etape_etp WHERE etp_code = '".$code."'");
+        return $resultat->getRow();
     }
 
     /* fonctions de gestion des indices */

@@ -48,14 +48,23 @@ if (!isset($etape)) {
                                     ?>
                                 </p>
                                 <br>
-                                <div class="col-lg-12 col-12">
-                                    <div class="form-floating">
-                                        <input type="text" name="reponse" id="reponse" class="form-control"
-                                            placeholder="reponse" required="">
-                                        <label for="floatingInput">Reponse</label>
+                                <?php
+                                echo form_open('/scenario/franchir_etape/'); ?>
+                                    <?= csrf_field() ?>
+                                    <div class="col-lg-12 col-12">
+                                        <div class="form-floating">
+                                            <input type="hidden" name="code_etape" id="code_etape" class="form-control" value="<?php echo $etape->etp_code ?>" required="">
+                                            <input type="hidden" name="code_scenario" id="code_scenario" class="form-control" value="<?php echo $etape->snr_code ?>" required="">
+                                            <input type="hidden" name="difficulte_etape" id="difficulte_etape" class="form-control" value="<?php echo $difficulte ?>" required="">
+
+                                            <input type="text" name="reponse" id="reponse" class="form-control"
+                                                placeholder="reponse" required="">
+                                            <label for="floatingInput">Reponse</label>
+                                            <?= validation_show_error('reponse') ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block ml-auto">Envoyer</button>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block ml-auto">Envoyer</button>
+                                </form>
                             </div>
                         </div>
                     </div>

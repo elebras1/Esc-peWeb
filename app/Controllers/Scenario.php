@@ -23,15 +23,44 @@ class Scenario extends BaseController
             . view('templates/bas');
     }
 
-    public function afficher_1ere_etape($code = 0, $difficulte = 0)
+    public function afficher_1ere_etape($code = null, $difficulte = null)
     {
-        if (empty($code) || $difficulte == 0 || $difficulte > 3)
+        if ($this->request->getMethod()=="post")
+        {
+            $messages = [
+                'reponse.required' => 'Veuillez entrer une réponse.'
+            ];
+            if (! $this->validate(['code_etape' => 'required', 'code_scenario' => 'required', 'difficulte_etape' => 'required', 'reponse' => 'required'], $messages))
+            { 
+                // La validation du formulaire a échoué, retour au formulaire !
+                return view('templates/haut')
+                . view('scenario/afficher_1ere_etape')
+                . view('templates/bas');
+            }
+
+            $recuperation = $this->validator->getValidated();
+            if($this->model->check_answer($recuperation['code_etape'], $recuperation['reponse']))
+            {
+                $numero_etape = $this->model->get_numero_by_code($recuperation['code_etape']);
+                $next_etape = $this->model->get_next_etape($recuperation['code_scenario'], $numero_etape->etp_numero + 1);
+                // reponse correcte, redirection vers la prochaine etape
+                return redirect()->to('/scenario/franchir_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
+            }
+
+            // reponse incorrecte, redirection vers la premiere etape
+            return redirect()->to('/scenario/afficher_1ere_etape/'.$recuperation['code_scenario'].'/'.$recuperation['difficulte_etape']);
+        }
+
+
+        if (empty($code) || empty($difficulte) || $difficulte > 3)
         {
             return redirect()->to('/scenario/afficher_scenarios');
         }
+        
         else{
             $data['titre'] = 'Première étape :';
             $data['etape'] = $this->model->get_first_etape($code, $difficulte);
+            $data['difficulte'] = $difficulte;
             return view('templates/haut', $data)
             . view('etape/affichage_1ere_etape')
             . view('templates/bas');
@@ -218,17 +247,49 @@ class Scenario extends BaseController
             . view('templates/bas2');
     }
 
-    public function franchir_etape($code = 0, $difficulte = 0)
+    public function franchir_etape($code = null, $difficulte = null)
     {
-        if (empty($code) || $difficulte == 0 || $difficulte > 3)
+        if ($this->request->getMethod()=="post")
+        {
+            $messages = [
+                'reponse.required' => 'Veuillez entrer une réponse.'
+            ];
+            if (! $this->validate(['code_etape' => 'required', 'code_scenario' => 'required', 'difficulte_etape' => 'required', 'reponse' => 'required'], $messages))
+            { 
+                // La validation du formulaire a échoué, retour au formulaire !
+                return view('templates/haut')
+                . view('scenario/franchir_etape')
+                . view('templates/bas');
+            }
+
+            $recuperation = $this->validator->getValidated();
+            if($this->model->check_answer($recuperation['code_etape'], $recuperation['reponse']))
+            {
+                $numero_etape = $this->model->get_numero_by_code($recuperation['code_etape']);
+                $next_etape = $this->model->get_next_etape($recuperation['code_scenario'], $numero_etape->etp_numero + 1);
+                if($next_etape == null) {
+                    return redirect()->to('/scenario/finaliser/');
+                }
+                // reponse correcte, redirection vers la prochaine etape
+                return redirect()->to('/scenario/franchir_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
+            }
+
+            // reponse incorrecte, redirection vers l'etape en cours
+            return redirect()->to('/scenario/franchir_etape/'.$recuperation['code_etape'].'/'.$recuperation['difficulte_etape']);
+        }
+
+
+        if (empty($code) || empty($difficulte) || $difficulte > 3)
         {
             return redirect()->to('/scenario/afficher_scenarios');
         }
+        
         else{
             $data['titre'] = 'Etape :';
             $data['etape'] = $this->model->get_etape($code, $difficulte);
+            $data['difficulte'] = $difficulte;
             return view('templates/haut', $data)
-            . view('etape/franchir_etape')
+            . view('etape/etape_franchir')
             . view('templates/bas');
         }
     }
