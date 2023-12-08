@@ -240,6 +240,7 @@ class Db_model extends Model
 
     public function check_answer($code, $reponse)
     {
+        $reponse = addslashes($reponse);
         $resultat = $this->db->query("SELECT * FROM t_etape_etp WHERE etp_code = '".$code."' AND etp_reponse = '".$reponse."'");
 
         if ($resultat->getNumRows() == 1) {
