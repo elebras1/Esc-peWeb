@@ -310,9 +310,7 @@ class Compte extends BaseController
     {
         $session=session();
         $session->destroy();
-        return view('templates/haut', ['titre' => 'Se connecter'])
-        . view('compte/compte_connecter')
-        . view('templates/bas');
+        return redirect()->to('compte/connecter');
     }
 
 }

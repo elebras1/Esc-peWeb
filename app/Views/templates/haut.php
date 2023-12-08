@@ -64,10 +64,21 @@ https://templatemo.com/tm-584-pod-talk
                         <a class="nav-link" href="<?php echo base_url();?>index.php/scenario/afficher_scenarios">Scénario</a>
                     </li>
                 </ul>
-
-                <div class="ms-4">
-                    <a href="<?php echo base_url();?>index.php/compte/connecter" class="btn custom-btn custom-border-btn smoothscroll">Connexion</a>
-                </div>
+                <?php
+                    if(session()->user == null) {
+                    ?>
+                        <div class="ms-4">
+                            <a href="<?php echo base_url();?>index.php/compte/connecter" class="btn custom-btn custom-border-btn smoothscroll">Connexion</a>
+                        </div>
+                <?php
+                    }
+                    else {
+                ?>
+                   <a href="<?php echo base_url();?>index.php/compte/deconnecter" class="btn custom-btn custom-border-btn smoothscroll m-3">Déconnexion</a>
+                   <a href="<?php echo base_url();?>index.php/compte/afficher_accueil" class="btn custom-btn">Espace privé</a> 
+                <?php
+                    }
+                ?>
             </div>
         </div>
     </nav>
