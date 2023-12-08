@@ -21,9 +21,9 @@ class Compte extends BaseController
             {
                 return redirect()->to('/compte/afficher_profil');
             }
-            $data['titre']="Comptes";
             $data['logins'] = $this->model->get_all_compte();
             $data['total'] = $this->model->get_number_compte();
+            $data['titre']="Comptes " . $data['total']->nb;
 
             return view('templates/haut2', $data)
             .view('compte/affichage_comptes')

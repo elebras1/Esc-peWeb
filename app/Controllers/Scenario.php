@@ -140,13 +140,13 @@ class Scenario extends BaseController
                         'required' => 'Veuillez entrer un intitulé.',
                         'max_length' => 'Un intitulé ne doit pas dépasser 180 caractères.',
                         'min_length' => 'Un intitulé doit avoir au moins 5 caractères.',
-                        'regex_match' => 'Le mot de passe ne doit contenir que des caractères alphanumériques, des espaces, et les caractères : ! ? . , : ;',
+                        'regex_match' => 'Un intitulé ne doit contenir que des caractères alphanumériques, des espaces, et les caractères : ! ? . , : ;',
                     ],
                     'description' => [
                         'required' => 'Veuillez entrer votre nom.',
                         'max_length' => 'La description ne doit pas dépasser 380 caractères.',
                         'min_length' => 'La description doit avoir au moins 5 caractères.',
-                        'regex_match' => 'La description ne doit contenir que des lettres, des espaces ou des apostrophes.',
+                        'regex_match' => 'La description ne doit contenir que des caractères alphanumériques, des espaces, et les caractères : ! ? . , : ; ( )',
                     ],
                     'statut' => [
                         'required' => 'Veuillez selectionner un statut.'
@@ -165,7 +165,7 @@ class Scenario extends BaseController
 
                 if (!$this->validate([
                     'intitule' => 'required|max_length[180]|min_length[2]|regex_match[/^[0-9a-zA-ZÀ-ÿç\'\s!?.,:;]+$/]',
-                    'description' => 'required|max_length[380]|min_length[2]|regex_match[/^[0-9a-zA-ZÀ-ÿç\'\s!?.,:;]+$/]',
+                    'description' => 'required|max_length[380]|min_length[2]|regex_match[/^[0-9a-zA-ZÀ-ÿç\'\s!?.,:;()]+$/]',
                     'statut' => 'required',
                     'fichier' => [
                         'label' => 'Fichier image',

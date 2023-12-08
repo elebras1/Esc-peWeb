@@ -38,7 +38,7 @@ class Db_model extends Model
 
     public function get_number_compte()
     {
-        $resultat = $this->db->query("SELECT count(cpt_id) AS number FROM t_compte_cpt;");
+        $resultat = $this->db->query("SELECT nbComptes() AS nb;");
         return $resultat->getRow();
     }
 
@@ -158,12 +158,7 @@ class Db_model extends Model
 
     public function get_all_scenarios_activate()
     {
-        $resultat = $this->db->query
-        (
-            "SELECT snr_id, snr_code, snr_intitule, snr_image, cpt_login
-            FROM t_compte_cpt RIGHT JOIN t_scenario_snr USING(cpt_id) LEFT JOIN t_etape_etp USING(snr_id)
-            GROUP BY snr_id;"
-        );
+        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_scenario_snr USING(cpt_id) WHERE snr_statut = 'A'");
         return $resultat->getResultArray();
     }
 
