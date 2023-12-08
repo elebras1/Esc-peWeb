@@ -30,6 +30,9 @@ $routes->get('scenario/franchir_etape/(:any)/(:num)', [Scenario::class, 'franchi
 $routes->get('scenario/franchir_etape/(:any)/', [Scenario::class, 'franchir_etape']);
 $routes->get('scenario/franchir_etape/', [Scenario::class, 'franchir_etape']);
 $routes->post('scenario/franchir_etape/', [Scenario::class, 'franchir_etape']);
+$routes->get('scenario/finaliser_scenario/(:any)', [Scenario::class, 'finaliser_scenario']);
+$routes->get('scenario/finaliser_scenario/', [Scenario::class, 'finaliser_scenario']);
+$routes->post('scenario/finaliser_scenario/', [Scenario::class, 'finaliser_scenario']);
 //Compte routes
 $routes->get('compte/afficher_accueil', [Compte::class, 'afficher_accueil']);
 $routes->get('compte/afficher_profil', [Compte::class, 'afficher_profil']); 

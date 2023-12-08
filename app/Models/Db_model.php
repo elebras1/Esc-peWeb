@@ -174,11 +174,28 @@ class Db_model extends Model
         return $resultat->getResultArray();
     }
 
+    public function is_correct_code($code_scenario, $code_etape)
+    {
+        $resultat = $this->db->query(
+            "SELECT * FROM t_scenario_snr 
+            JOIN t_etape_etp USING(snr_id) 
+            WHERE snr_code = '".$code_scenario."' 
+            AND etp_id IN (SELECT etp_id FROM t_etape_etp WHERE etp_code = '".$code_etape."')
+            ORDER BY etp_numero DESC LIMIT 1"
+        );
+
+        if ($resultat->getNumRows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function set_scenario($saisie)
     {
         $code = htmlspecialchars($saisie['code']);
-        $intitule = addslashes($saisie['intitule']);
-        $description = addslashes($saisie['description']);
+        $intitule = htmlspecialchars(addslashes($saisie['intitule']));
+        $description = htmlspecialchars(addslashes($saisie['description']));
         $image = htmlspecialchars($saisie['fichier']);
         $statut = htmlspecialchars($saisie['statut']);
         $id = htmlspecialchars($saisie['id']);

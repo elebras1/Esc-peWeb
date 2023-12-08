@@ -43,7 +43,12 @@ class Scenario extends BaseController
             {
                 $numero_etape = $this->model->get_numero_by_code($recuperation['code_etape']);
                 $next_etape = $this->model->get_next_etape($recuperation['code_scenario'], $numero_etape->etp_numero + 1);
-                // reponse correcte, redirection vers la prochaine etape
+                if($next_etape == null) {
+                    //redirection vers la finalisation si pas d'etape suivante
+                    return redirect()->to('/scenario/finaliser_scenario/'.$recuperation['code_etape'].'/'.$recuperation['code_scenario']);
+                }
+
+                // reponse correcte, redirection vers la prochaine etape(concat : code etape & scenario)
                 return redirect()->to('/scenario/franchir_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
             }
 
@@ -268,8 +273,9 @@ class Scenario extends BaseController
                 $numero_etape = $this->model->get_numero_by_code($recuperation['code_etape']);
                 $next_etape = $this->model->get_next_etape($recuperation['code_scenario'], $numero_etape->etp_numero + 1);
                 if($next_etape == null) {
-                    return redirect()->to('/scenario/finaliser/');
+                    return redirect()->to('/scenario/finaliser_scenario/'.$recuperation['code_etape'].$recuperation['code_scenario']);
                 }
+
                 // reponse correcte, redirection vers la prochaine etape
                 return redirect()->to('/scenario/franchir_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
             }
@@ -292,6 +298,32 @@ class Scenario extends BaseController
             . view('etape/etape_franchir')
             . view('templates/bas');
         }
+    }
+
+    public function finaliser_scenario($code = null)
+    {
+        if(empty($code) || strlen($code) < 18)
+        {
+            return redirect()->to('scenario/afficher_scenarios');
+        }
+
+        $taille_code_etape = 8;
+        $taille_code_scenario = 10;
+        // split des codes
+        $code_etape = substr($code, 0, $taille_code_etape);
+        $code_scenario = substr($code, $taille_code_etape, $taille_code_scenario);
+
+        $data['scenario'] = $this->model->get_scenario($code_scenario);
+        if(!$this->model->is_correct_code($code_scenario, $code_etape))
+        {
+            return redirect()->to('scenario/afficher_scenarios');
+        }
+
+        $data['titre'] = 'Finalisation du scénario';
+
+        return view('templates/haut', $data)
+        . view('scenario/scenario_finalisation')
+        . view('templates/bas');
     }
 
 }
