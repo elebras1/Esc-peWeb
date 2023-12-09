@@ -249,11 +249,11 @@ class Db_model extends Model
         return $resultat->getResultArray();
     }
 
-    public function delete_etape_by_scenario($code)
+    /*public function delete_etape_by_scenario($code)
     {
         $sql = "DELETE FROM t_etape_etp WHERE etp_id IN (SELECT etp_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
-    }
+    }*/
 
     public function check_answer($code, $reponse)
     {
@@ -274,19 +274,19 @@ class Db_model extends Model
     }
 
     /* fonctions de gestion des indices */
-    public function delete_indice_by_scenario($code)
+    /*public function delete_indice_by_scenario($code)
     {
         $sql = "DELETE FROM t_indice_idc WHERE idc_id IN 
                 (SELECT idc_id FROM t_scenario_snr JOIN t_etape_etp USING(snr_id) JOIN t_indice_idc USING(etp_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
-    }
+    }*/
 
     /* fonctions de gestion des parties */
-    public function delete_partie_by_scenario($code)
+    /*public function delete_partie_by_scenario($code)
     {
         $sql = "DELETE FROM t_partie_prt WHERE snr_id IN (SELECT snr_id FROM t_scenario_snr JOIN t_partie_prt USING(snr_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
-    }
+    }*/
 
     public function set_partie($difficulte, $id_snr, $id_ptp)
     {

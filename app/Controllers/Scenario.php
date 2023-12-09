@@ -238,9 +238,6 @@ class Scenario extends BaseController
             $recuperation = $this->request->getPost('submit_button');
     
             if ($recuperation == 1) {
-                $this->model->delete_indice_by_scenario($code);
-                $this->model->delete_etape_by_scenario($code);
-                $this->model->delete_partie_by_scenario($code);
                 $this->model->delete_scenario($code);
             }
     
