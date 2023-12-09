@@ -53,8 +53,8 @@ class Db_model extends Model
 
     public function update_compte($saisie, $cpt_id)
     {
-        $mot_de_passe = htmlspecialchars($saisie['new_password'] . $this->salt);
-        $sql = "UPDATE t_compte_cpt SET cpt_mot_de_passe = SHA2('" . $mot_de_passe . "', 512) WHERE cpt_id = " . $cpt_id . ";";
+        $mot_de_passe = htmlspecialchars($saisie['new_password']);
+        $sql = "CALL updateCompte('".$mot_de_passe."',".$cpt_id.")";
         return $this->db->query($sql);
     }
 
