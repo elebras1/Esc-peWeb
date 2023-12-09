@@ -45,7 +45,7 @@ class Scenario extends BaseController
                 $next_etape = $this->model->get_next_etape($recuperation['code_scenario'], $numero_etape->etp_numero + 1);
                 if($next_etape == null) {
                     //redirection vers la finalisation si pas d'etape suivante
-                    return redirect()->to('/scenario/finaliser_scenario/'.$recuperation['code_etape'].'/'.$recuperation['code_scenario']);
+                    return redirect()->to('/scenario/finaliser_scenario/'.$recuperation['code_etape'].$recuperation['code_scenario'].$recuperation['difficulte_etape']);
                 }
 
                 // reponse correcte, redirection vers la prochaine etape(concat : code etape & scenario)
@@ -273,7 +273,7 @@ class Scenario extends BaseController
                 $numero_etape = $this->model->get_numero_by_code($recuperation['code_etape']);
                 $next_etape = $this->model->get_next_etape($recuperation['code_scenario'], $numero_etape->etp_numero + 1);
                 if($next_etape == null) {
-                    return redirect()->to('/scenario/finaliser_scenario/'.$recuperation['code_etape'].$recuperation['code_scenario']);
+                    return redirect()->to('/scenario/finaliser_scenario/'.$recuperation['code_etape'].$recuperation['code_scenario'].$recuperation['difficulte_etape']);
                 }
 
                 // reponse correcte, redirection vers la prochaine etape
@@ -319,11 +319,14 @@ class Scenario extends BaseController
                     'valid_email' => 'Veuillez entrer une adresse e-mail valide.',
                 ]
             ];
-            if (!$this->validate(['nom' => 'required|max_length[80]|min_length[2]|alpha_numeric', 'email' => 'required|max_length[200]|min_length[8]|valid_email', 'code_scenario' => 'required'], $messages))
+            if (!$this->validate(['nom' => 'required|max_length[80]|min_length[2]|alpha_numeric', 'email' => 'required|max_length[200]|min_length[8]|valid_email', 'code_etape' => 'required', 'code_scenario' => 'required', 'difficulte' => 'required'], $messages))
             {
+                //recuperation des input hidden + info scenario
+                $data['code_etape'] = $this->request->getPost('code_etape');
                 $data['code_scenario'] = $this->request->getPost('code_scenario');
+                $data['difficulte'] = $this->request->getPost('difficulte');
                 $data['scenario'] = $this->model->get_scenario($data['code_scenario']);
-                //si formulaire pas valider retour vers la vue actuel
+                //formulaire pas valide retour vers la vue actuel
                 return view('templates/haut', $data)
                 . view('scenario/scenario_finalisation')
                 . view('templates/bas');
@@ -332,13 +335,25 @@ class Scenario extends BaseController
             // La validation du formulaire a réussi, traitement du formulaire
             $recuperation = $this->validator->getValidated();
             $data['scenario'] = $this->model->get_scenario($recuperation['code_scenario']);
-            $this->model->set_participant($recuperation);
-            $this->model->set_participation($recuperation, $code_etape);
+            //verification de l'existence d'un participant
+            if($this->model->get_participant_by_email($recuperation['email'])->ptp_id)
+            {
+                //insertion seulement dans partie
+                $participant = $this->model->get_participant_by_email($recuperation['email']);
+                $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);
+            }
+            else 
+            {
+                //insertion dans participant et partie
+                $this->model->set_participant($recuperation);
+                $participant = $this->model->get_participant_by_email($recuperation['email']);
+                $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);   
+            }
 
-            return redirect()->to('/scenario/sqdsq');
+            return redirect()->to('/scenario/afficher_scenarios');
         }
 
-        if(empty($code) || strlen($code) < 18)
+        if(empty($code) || strlen($code) != 19)
         {
             return redirect()->to('scenario/afficher_scenarios');
         }
@@ -348,9 +363,12 @@ class Scenario extends BaseController
         // split des codes
         $code_etape = substr($code, 0, $taille_code_etape);
         $code_scenario = substr($code, $taille_code_etape, $taille_code_scenario);
+        $difficulte = substr($code, $taille_code_etape + $taille_code_scenario, 1);
 
         $data['scenario'] = $this->model->get_scenario($code_scenario);
+        $data['code_etape'] = $code_etape;
         $data['code_scenario'] = $code_scenario;
+        $data['difficulte'] = $difficulte;
         if(!$this->model->is_correct_code($code_scenario, $code_etape))
         {
             return redirect()->to('scenario/afficher_scenarios');

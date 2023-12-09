@@ -288,8 +288,23 @@ class Db_model extends Model
         return $this->db->query($sql);
     }
 
-    public function set_participation($recuperation)
+    public function set_partie($difficulte, $id_snr, $id_ptp)
     {
-        
+        $sql = "INSERT INTO t_partie_prt VALUES(".$id_ptp.", ".$id_snr.", NOW(), NOW(), ".$difficulte.")";
+        return $this->db->query($sql);
+    }
+
+    /* fonctions de gestion des participations */
+    public function get_participant_by_email($email) {
+        $sql = "SELECT * FROM t_participant_ptp WHERE ptp_email = '".$email."'";
+        return $this->db->query($sql)->getRow();
+    }
+
+    public function set_participant($saisie)
+    {
+        $nom = htmlspecialchars($saisie['nom']);
+        $email = htmlspecialchars($saisie['email']);
+        $sql = "INSERT t_participant_ptp (ptp_email, ptp_nom) VALUES('".$email."', '".$nom."')";
+        return $this->db->query($sql);
     }
 }
