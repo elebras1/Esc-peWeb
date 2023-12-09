@@ -287,4 +287,9 @@ class Db_model extends Model
         $sql = "DELETE FROM t_partie_prt WHERE snr_id IN (SELECT snr_id FROM t_scenario_snr JOIN t_partie_prt USING(snr_id) WHERE snr_code = '" . $code . "')";
         return $this->db->query($sql);
     }
+
+    public function set_participation($recuperation)
+    {
+        
+    }
 }

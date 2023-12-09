@@ -302,6 +302,42 @@ class Scenario extends BaseController
 
     public function finaliser_scenario($code = null)
     {
+        $data['titre'] = 'Finalisation du scénario';
+        if ($this->request->getMethod()=="post")
+        {
+            $messages = [
+                'nom' => [
+                    'required' => 'Veuillez entrer un nom.',
+                    'max_length' => 'Le nom ne doit pas dépasser 80 caractères.',
+                    'min_length' => 'Le nom doit avoir au moins 2 caractères.',
+                    'alpha_numeric' => 'Le nom ne doit contenir que des caractères alphanumériques.',
+                ],
+                'email' => [
+                    'required' => 'Veuillez entrer une adresse e-mail.',
+                    'max_length' => 'L\'adresse e-mail ne doit pas dépasser 200 caractères.',
+                    'min_length' => 'L\'adresse e-mail doit avoir au moins 8 caractères.',
+                    'valid_email' => 'Veuillez entrer une adresse e-mail valide.',
+                ]
+            ];
+            if (!$this->validate(['nom' => 'required|max_length[80]|min_length[2]|alpha_numeric', 'email' => 'required|max_length[200]|min_length[8]|valid_email', 'code_scenario' => 'required'], $messages))
+            {
+                $data['code_scenario'] = $this->request->getPost('code_scenario');
+                $data['scenario'] = $this->model->get_scenario($data['code_scenario']);
+                //si formulaire pas valider retour vers la vue actuel
+                return view('templates/haut', $data)
+                . view('scenario/scenario_finalisation')
+                . view('templates/bas');
+            }
+
+            // La validation du formulaire a réussi, traitement du formulaire
+            $recuperation = $this->validator->getValidated();
+            $data['scenario'] = $this->model->get_scenario($recuperation['code_scenario']);
+            $this->model->set_participant($recuperation);
+            $this->model->set_participation($recuperation, $code_etape);
+
+            return redirect()->to('/scenario/sqdsq');
+        }
+
         if(empty($code) || strlen($code) < 18)
         {
             return redirect()->to('scenario/afficher_scenarios');
@@ -314,12 +350,11 @@ class Scenario extends BaseController
         $code_scenario = substr($code, $taille_code_etape, $taille_code_scenario);
 
         $data['scenario'] = $this->model->get_scenario($code_scenario);
+        $data['code_scenario'] = $code_scenario;
         if(!$this->model->is_correct_code($code_scenario, $code_etape))
         {
             return redirect()->to('scenario/afficher_scenarios');
         }
-
-        $data['titre'] = 'Finalisation du scénario';
 
         return view('templates/haut', $data)
         . view('scenario/scenario_finalisation')
