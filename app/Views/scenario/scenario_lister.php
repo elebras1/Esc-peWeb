@@ -90,7 +90,12 @@
                                             echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/pencil-black.png' style='width : 10px;'/></a>";
                                             echo "</td>";
                                             echo "<td class='align-middle text-center text-sm'>";
-                                            echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/padlock-black.png' style='width : 10px;'/></a>";
+                                            if ($scenario['snr_statut'] == 'D') {
+                                                echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/padlock-black.png' style='width : 7px;'/></a>";
+                                            }
+                                            elseif($scenario['snr_statut'] == 'A') {
+                                                echo "<a href=''><img src='".base_url()."bootstrap2/assets/img/padlock-open-black.png' style='width : 10px;'/></a>";
+                                            }
                                             echo "</td>";
                                             echo "<td class='align-middle text-center text-sm'>";
                                             echo "<a href='".base_url()."index.php/scenario/supprimer/". $scenario["snr_code"] ."'><img src='".base_url()."bootstrap2/assets/img/cross-black.png' style='width : 10px;'/></a>";

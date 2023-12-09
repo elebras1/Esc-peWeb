@@ -166,7 +166,7 @@ class Db_model extends Model
     {
         $resultat = $this->db->query
         (
-            "SELECT snr_id, snr_code, snr_intitule, snr_image, cpt_login, COUNT(etp_id) AS nb_etape
+            "SELECT snr_id, snr_code, snr_intitule, snr_image, snr_statut, cpt_login, COUNT(etp_id) AS nb_etape
             FROM t_compte_cpt RIGHT JOIN t_scenario_snr USING(cpt_id) LEFT JOIN t_etape_etp USING(snr_id)
             GROUP BY snr_id
             ORDER BY snr_statut, snr_id;"
