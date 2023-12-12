@@ -58,7 +58,7 @@
                         }
                     }
                     else {
-                        echo("<h3>Aucune actualité pour le moment</h3>");
+                        echo("<h3>Aucune actualité pour l'instant !</h3>");
                     }
                 ?>
             </tbody>

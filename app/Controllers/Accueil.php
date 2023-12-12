@@ -13,7 +13,7 @@ class Accueil extends BaseController
 
     public function afficher()
     {
-        $data['actualites'] = $this->model->get_all_actualites(); 
+        $data['actualites'] = $this->model->get_last_actualites(); 
 
         return view('templates/haut', $data)
             . view('affichage_accueil')

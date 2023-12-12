@@ -38,7 +38,7 @@
                     }
                 }
                 else {
-                    echo("<h3>Aucun scenarios pour le moment</h3>");
+                    echo("<h3>Aucun scénario pour l'instant !</h3>");
                 }
             ?>
         </div>

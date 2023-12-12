@@ -125,9 +125,9 @@ class Db_model extends Model
     }
 
     /* fonctions de gestion des actualites */
-    public function get_all_actualites()
+    public function get_last_actualites()
     {
-        $resultat = $this->db->query("SELECT act_id, act_titre, act_description, act_date, cpt_login FROM t_actualite_act JOIN t_compte_cpt USING(cpt_id) WHERE act_statut = 'A';");
+        $resultat = $this->db->query("SELECT act_id, act_titre, act_description, act_date, cpt_login FROM t_actualite_act JOIN t_compte_cpt USING(cpt_id) WHERE act_statut = 'A' ORDER BY act_date DESC LIMIT 5;");
         return $resultat->getResultArray();
     }
 
