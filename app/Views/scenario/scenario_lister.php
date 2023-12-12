@@ -53,7 +53,12 @@
                                         echo "<span class='text-secondary text-xs font-weight-bold'>" . $scenario["cpt_login"] . "</span>";
                                         echo "</td>";
                                         echo "<td class='align-middle text-center text-sm'>";
-                                        echo "<span class='text-secondary text-xs font-weight-bold'>" . $scenario["nb_etape"] . "</span>";
+                                        if($scenario["nb_etape"] == 0) {
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>Aucune étape pour ce scénario</span>" ;
+                                        }
+                                        else {
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>" . $scenario["nb_etape"] . "</span>";
+                                        }
                                         echo "</td>";
                                         echo "<td class='align-middle text-center text-sm'>";
                                         echo "<img src='".base_url()."ressources/". $scenario["snr_image"] ."' style='width : 30px; height : 30px; border-radius: 50%;'/>";
