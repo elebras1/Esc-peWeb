@@ -30,12 +30,10 @@ class Scenario extends BaseController
             $messages = [
                 'reponse.required' => 'Veuillez entrer une réponse.'
             ];
-            if (! $this->validate(['code_etape' => 'required', 'code_scenario' => 'required', 'difficulte_etape' => 'required', 'reponse' => 'required'], $messages))
+            if (!$this->validate(['code_etape' => 'required', 'code_scenario' => 'required', 'difficulte_etape' => 'required', 'reponse' => 'required'], $messages))
             { 
                 // La validation du formulaire a échoué, retour au formulaire !
-                return view('templates/haut')
-                . view('scenario/afficher_1ere_etape')
-                . view('templates/bas');
+                return redirect()->to('/scenario/afficher_1ere_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
             }
 
             $recuperation = $this->validator->getValidated();
@@ -52,14 +50,16 @@ class Scenario extends BaseController
                 return redirect()->to('/scenario/franchir_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
             }
 
-            // reponse incorrecte, redirection vers la premiere etape
-            return redirect()->to('/scenario/afficher_1ere_etape/'.$recuperation['code_scenario'].'/'.$recuperation['difficulte_etape']);
+            // reponse incorrecte, redirection vers le formulaire avec l'erreur
+            return redirect()->to('/scenario/afficher_1ere_etape/'.$recuperation['code_scenario'].'/'.$recuperation['difficulte_etape'])->with('erreur_reponse', 'Réponse incorrecte.');
         }
 
 
         if (empty($code) || empty($difficulte) || $difficulte > 3)
         {
-            return redirect()->to('/scenario/afficher_scenarios');
+            return view('templates/haut', ['erreur' => 'L\'information recherchée n\'existe pas !'])
+            . view('etape/affichage_1ere_etape')
+            . view('templates/bas');
         }
         
         else{
@@ -260,7 +260,7 @@ class Scenario extends BaseController
             { 
                 // La validation du formulaire a échoué, retour au formulaire !
                 return view('templates/haut')
-                . view('scenario/franchir_etape')
+                . view('etape/etape_franchir')
                 . view('templates/bas');
             }
 
@@ -277,14 +277,16 @@ class Scenario extends BaseController
                 return redirect()->to('/scenario/franchir_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
             }
 
-            // reponse incorrecte, redirection vers l'etape en cours
-            return redirect()->to('/scenario/franchir_etape/'.$recuperation['code_etape'].'/'.$recuperation['difficulte_etape']);
+            // reponse incorrecte, redirection vers l'etape en cours avec l'erreur flash
+            return redirect()->to('/scenario/franchir_etape/'.$recuperation['code_etape'].'/'.$recuperation['difficulte_etape'])->with('erreur_reponse', 'Réponse incorrecte.');
         }
 
 
         if (empty($code) || empty($difficulte) || $difficulte > 3)
         {
-            return redirect()->to('/scenario/afficher_scenarios');
+            return view('templates/haut', ['erreur' => 'L\'information recherchée n\'existe pas !'])
+            . view('etape/affichage_1ere_etape')
+            . view('templates/bas');
         }
         
         else{
@@ -343,7 +345,7 @@ class Scenario extends BaseController
                 $participant = $this->model->get_participant_by_email($recuperation['email']);
                 $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);
             }
-            
+
             return redirect()->to('/scenario/afficher_scenarios');
         }
 

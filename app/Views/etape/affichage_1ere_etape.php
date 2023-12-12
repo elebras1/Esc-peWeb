@@ -5,7 +5,14 @@
     </div>
 </section>
 <?php
-if (!isset($etape)) {
+if (isset($erreur)) {
+    echo "<div class='container'>";
+    echo "<h2 class='mb-2'>".$erreur."";
+    echo "</div>";
+    echo "<br>";
+    echo "<br>"; 
+}
+elseif (empty($etape)) {
     echo "<div class='container'>";
     echo "<h2 class='mb-2'>Ce scénario n’existe pas!</h2>";
     echo "</div>";
@@ -61,6 +68,12 @@ if (!isset($etape)) {
                                                 placeholder="reponse" required="">
                                             <label for="floatingInput">Reponse</label>
                                             <?= validation_show_error('reponse') ?>
+                                            <?php
+                                                $erreur_reponse = session('erreur_reponse');
+                                                if ($erreur_reponse) {
+                                                    echo '<span class="text-danger">'.$erreur_reponse.'</span>';
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-lg btn-block ml-auto">Envoyer</button>
