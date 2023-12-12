@@ -23,63 +23,78 @@
                     </div>
 
                 </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pseudo / Email</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom / Prénom</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rôle</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Validité</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                if (!empty($logins) && is_array($logins)) {
-                                    foreach ($logins as $pseudo) {
-                                        echo "<tr>";
-                                        echo "<td class='align-middle'>";
-                                        echo "<div class='d-flex px-2 py-1'>";
-                                        echo "<div>";
-                                        echo "</div>";
-                                        echo "<div class='d-flex flex-column justify-content-center'>";
-                                        echo "<h6 class='mb-0 text-sm'>" . $pseudo["cpt_login"] . "</h6>";
-                                        echo "<p class='text-xs text-secondary mb-0'>" . $pseudo["pfl_email"] . "</p>";
-                                        echo "</div>";
-                                        echo "</div>";
-                                        echo "</td>";
-                                        echo "<td class='align-middle'>";
-                                        echo "<p class='text-xs font-weight-bold mb-0'>" . stripslashes($pseudo["pfl_nom"]) . "</p>";
-                                        echo "<p class='text-xs text-secondary mb-0'>" . stripslashes($pseudo["pfl_prenom"]) . "</p>";
-                                        echo "</td>";
-                                        echo "<td class='align-middle text-center'>";
-                                        echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_date_inscription"] . "</span>";
-                                        echo "<td class='align-middle text-center text-sm'>";
-                                        if($pseudo["pfl_role"] == 'O') {
-                                            echo "<span class='text-secondary text-xs font-weight-bold'>Organisateur</span>";
+                <div class="" style="display: flex;flex-direction: column-reverse;">
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <?php
+                                $activeComptes = false;
+                            ?>
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pseudo / Email</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom / Prénom</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rôle</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Validité</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if (!empty($logins) && is_array($logins)) {
+                                        foreach ($logins as $pseudo) {
+                                            echo "<tr>";
+                                            echo "<td class='align-middle'>";
+                                            echo "<div class='d-flex px-2 py-1'>";
+                                            echo "<div>";
+                                            echo "</div>";
+                                            echo "<div class='d-flex flex-column justify-content-center'>";
+                                            echo "<h6 class='mb-0 text-sm'>" . $pseudo["cpt_login"] . "</h6>";
+                                            echo "<p class='text-xs text-secondary mb-0'>" . $pseudo["pfl_email"] . "</p>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "</td>";
+                                            echo "<td class='align-middle'>";
+                                            echo "<p class='text-xs font-weight-bold mb-0'>" . stripslashes($pseudo["pfl_nom"]) . "</p>";
+                                            echo "<p class='text-xs text-secondary mb-0'>" . stripslashes($pseudo["pfl_prenom"]) . "</p>";
+                                            echo "</td>";
+                                            echo "<td class='align-middle text-center'>";
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_date_inscription"] . "</span>";
+                                            echo "<td class='align-middle text-center text-sm'>";
+                                            if($pseudo["pfl_role"] == 'O') {
+                                                echo "<span class='text-secondary text-xs font-weight-bold'>Organisateur</span>";
+                                            }
+                                            elseif($pseudo["pfl_role"] == 'A') {
+                                                echo "<span class='text-secondary text-xs font-weight-bold'>Administrateur</span>";
+                                            }
+                                            echo "</td>";
+                                            echo "<td class='align-middle text-center text-sm'>";
+                                            if($pseudo["pfl_validite"] == 'A') {
+                                                echo "<span class='text-secondary text-xs font-weight-bold'>Activer</span>";
+                                                if($pseudo["pfl_role"] == 'O') {
+                                                    $activeComptes = true;
+                                                }
+                                            }
+                                            elseif($pseudo["pfl_validite"] == 'D') {
+                                                echo "<span class='text-secondary text-xs font-weight-bold'>Désactiver</span>";
+                                            }
+                                            echo "</td>";
+                                            echo "</tr>";
                                         }
-                                        elseif($pseudo["pfl_role"] == 'A') {
-                                            echo "<span class='text-secondary text-xs font-weight-bold'>Administrateur</span>";
-                                        }
-                                        echo "</td>";
-                                        echo "<td class='align-middle text-center text-sm'>";
-                                        if($pseudo["pfl_validite"] == 'A') {
-                                            echo "<span class='text-secondary text-xs font-weight-bold'>Activer</span>";
-                                        }
-                                        elseif($pseudo["pfl_validite"] == 'D') {
-                                            echo "<span class='text-secondary text-xs font-weight-bold'>Désactiver</span>";
-                                        }
-                                        echo "</td>";
-                                        echo "</tr>";
+                                    } else {
+                                        echo "<tr><td colspan='7'><h3>Aucune actualité pour le moment</h3></td></tr>";
                                     }
-                                } else {
-                                    echo "<tr><td colspan='7'><h3>Aucune actualité pour le moment</h3></td></tr>";
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="">
+                        <?php
+                            if(!$activeComptes) {
+                                echo '<span class="text-info p-3 font-weight-bold">Tous les comptes sont désactivés</span>';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ class Db_model extends Model
     /* fonctions de gestion des comptes*/
     public function get_all_compte()
     {
-        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id) ORDER BY pfl_validite, pfl_date_inscription;");
+        $resultat = $this->db->query("SELECT * FROM t_compte_cpt JOIN t_profil_pfl USING (cpt_id) ORDER BY pfl_validite, pfl_role, pfl_date_inscription, cpt_login;");
         return $resultat->getResultArray();
     }
 
