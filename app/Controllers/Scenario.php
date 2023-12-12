@@ -346,7 +346,11 @@ class Scenario extends BaseController
                 $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);
             }
 
-            return redirect()->to('/scenario/afficher_scenarios');
+            // affichage succes de la finalisation
+            $data['partie'] = $this->model->get_partie($participant->ptp_id, $data['scenario']->snr_id);
+            return view('templates/haut', $data)
+            . view('scenario/scenario_finalisation')
+            . view('templates/bas');
         }
 
         if(empty($code) || strlen($code) != 19)

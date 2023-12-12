@@ -294,6 +294,11 @@ class Db_model extends Model
         return $this->db->query($sql);
     }
 
+    public function get_partie($id_ptp, $id_snr) {
+        $resultat = $this->db->query("SELECT * FROM t_partie_prt WHERE ptp_id = ".$id_ptp." AND snr_id = ".$id_snr."");
+        return $resultat->getRow();
+    }
+
     /* fonctions de gestion des participations */
     public function get_participant_by_email($email) {
         $sql = "SELECT * FROM t_participant_ptp WHERE ptp_email = '".$email."'";

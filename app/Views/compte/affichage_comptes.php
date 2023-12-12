@@ -57,10 +57,20 @@
                                         echo "<td class='align-middle text-center'>";
                                         echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_date_inscription"] . "</span>";
                                         echo "<td class='align-middle text-center text-sm'>";
-                                        echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_role"] . "</span>";
+                                        if($pseudo["pfl_role"] == 'O') {
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>Organisateur</span>";
+                                        }
+                                        elseif($pseudo["pfl_role"] == 'A') {
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>Administrateur</span>";
+                                        }
                                         echo "</td>";
                                         echo "<td class='align-middle text-center text-sm'>";
-                                        echo "<span class='text-secondary text-xs font-weight-bold'>" . $pseudo["pfl_validite"] . "</span>";
+                                        if($pseudo["pfl_validite"] == 'A') {
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>Activer</span>";
+                                        }
+                                        elseif($pseudo["pfl_validite"] == 'D') {
+                                            echo "<span class='text-secondary text-xs font-weight-bold'>Désactiver</span>";
+                                        }
                                         echo "</td>";
                                         echo "</tr>";
                                     }

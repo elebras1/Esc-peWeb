@@ -20,7 +20,12 @@
                     <?php
                     if (!empty($scenario)) {
                         echo "<div><img src='".base_url()."ressources/". $scenario->snr_image."' style='width : 80px; height : 80px; border-radius: 10%;'/>";
-                        echo "<span class='fs-3 px-4' >". $scenario->snr_intitule ." - ".$scenario->snr_statut. "</span></div>";
+                        if($scenario->snr_statut == 'A') {
+                            echo "<span class='fs-3 px-4' >". $scenario->snr_intitule ." - Activer</span></div>";
+                        }
+                        elseif($scenario->snr_statut == 'D') {
+                            echo "<span class='fs-3 px-4' >". $scenario->snr_intitule ." - Désactiver</span></div>"; 
+                        }
                         echo "<span class='fs-3 my-4'>". $scenario->snr_description . "</span>";
                         if (!empty($etapes) && is_array($etapes)) {
                             foreach($etapes as $etape) {
