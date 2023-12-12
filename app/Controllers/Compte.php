@@ -67,7 +67,7 @@ class Compte extends BaseController
             }
             else
             { 
-                $this->validator->setError('pseudo', 'Confirmation du mot de passe erronée, Veuillez réessayer.');
+                $this->validator->setError('pseudo', 'Echec d\'authentification, Veuillez réessayer.');
 
                 return view('templates/haut', ['titre' => 'Se connecter'])
                 . view('compte/compte_connecter')
@@ -215,14 +215,14 @@ class Compte extends BaseController
                         'regex_match' => 'Le mot de passe ne doit contenir que des caractères alphanumériques et les caractères spéciaux : ! @ # % & * ( ) _ + : < > ? - .'
                     ],
                     'new_password' => [
-                        'max_length' => 'La confirmation du mot de passe ne doit pas dépasser 80 caractères.',
-                        'min_length' => 'La confirmation du mot de passe doit avoir au moins 8 caractères.',
-                        'matches' => 'La confirmation du mot de passe ne correspond pas au mot de passe saisi.',
+                        'max_length' => 'Le nouveau du mot de passe ne doit pas dépasser 80 caractères.',
+                        'min_length' => 'Le nouveau du mot de passe doit avoir au moins 8 caractères.',
+                        'matches' => 'Le nouveau du mot de passe ne correspond pas au mot de passe de confirmation saisi.',
                     ],
                     'new_password2' => [
-                        'max_length' => 'La confirmation du mot de passe ne doit pas dépasser 80 caractères.',
-                        'min_length' => 'La confirmation du mot de passe doit avoir au moins 8 caractères.',
-                        'matches' => 'La confirmation du mot de passe ne correspond pas au mot de passe saisi.',
+                        'max_length' => 'La confirmation du nouveau mot de passe ne doit pas dépasser 80 caractères.',
+                        'min_length' => 'La confirmation du nouveau mot de passe doit avoir au moins 8 caractères.',
+                        'matches' => 'La confirmation du nouveau mot de passe ne correspond pas au mot de passe saisi.',
                     ],
                     'nom' => [
                         'required' => 'Veuillez entrer votre nom.',

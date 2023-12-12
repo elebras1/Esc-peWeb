@@ -14,7 +14,7 @@ if (isset($erreur)) {
 }
 elseif (empty($etape)) {
     echo "<div class='container'>";
-    echo "<h2 class='mb-2'>Ce scénario n’existe pas!</h2>";
+    echo "<h2 class='mb-2'>Ce scénario n'a aucune étape pour l'instant!</h2>";
     echo "</div>";
     echo "<br>";
     echo "<br>";

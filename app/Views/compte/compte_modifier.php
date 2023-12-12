@@ -29,7 +29,9 @@
                             <div class="form-floating">
                                 <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Mot de passe" required="">
-                                <?= validation_show_error('password') ?>
+                                <div class="text-danger">
+                                    <?= validation_show_error('password') ?>
+                                </div>
                                 <label for="floatingInput">Mot de passe*</label>
                             </div>
                         </div>
@@ -38,7 +40,9 @@
                             <div class="form-floating">
                                 <input type="password" name="new_password" id="new_password" class="form-control"
                                     placeholder="Nouveau mot de passe"required="">
-                                <?= validation_show_error('new_password') ?>
+                                <div class="text-danger">
+                                    <?= validation_show_error('new_password') ?>
+                                </div> 
                                 <label for="floatingInput">Nouveau mot de passe*</label>
                             </div>
                         </div>
@@ -46,7 +50,9 @@
                             <div class="form-floating">
                                 <input type="password" name="new_password2" id="new_password2" class="form-control"
                                     placeholder="Confirmation "required="">
-                                <?= validation_show_error('new_password2') ?>
+                                <div class="text-danger">
+                                    <?= validation_show_error('new_password2') ?>
+                                </div>
                                 <label for="floatingInput">Confirmation du nouveau mot de passe*</label>
                             </div>
                         </div>
@@ -55,7 +61,9 @@
                             <div class="form-floating">
                                 <input type="text" name="nom" id="nom" class="form-control"
                                     placeholder="Nom" required="" value="<?php echo stripslashes($profil->pfl_nom); ?>">
-                                <?= validation_show_error('nom') ?>
+                                <div class="text-danger">
+                                    <?= validation_show_error('nom') ?>
+                                </div>
                                 <label for="floatingInput">Nom*</label>
                             </div>
                         </div>
@@ -64,7 +72,9 @@
                             <div class="form-floating">
                                 <input type="text" name="prenom" id="prenom" class="form-control"
                                     placeholder="Prenom" required="" value="<?php echo stripslashes($profil->pfl_prenom); ?>">
-                                <?= validation_show_error('prenom') ?>
+                                <div class="text-danger">
+                                    <?= validation_show_error('prenom') ?>
+                                </div>
                                 <label for="floatingInput">Prénom*</label>
                             </div>
                         </div>
@@ -73,7 +83,9 @@
                             <div class="form-floating">
                                 <input type="email" name="email" id="email" class="form-control"
                                     placeholder="Email" required="" value="<?php echo $profil->pfl_email; ?>">
-                                <?= validation_show_error('email') ?>
+                                <div class="text-danger">
+                                    <?= validation_show_error('email') ?>
+                                </div>
                                 <label for="floatingInput">Email*</label>
                             </div>
                         </div>
