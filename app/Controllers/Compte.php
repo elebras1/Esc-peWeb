@@ -67,7 +67,7 @@ class Compte extends BaseController
             }
             else
             { 
-                $this->validator->setError('pseudo', 'Identifiant ou mot de passe incorrect.');
+                $this->validator->setError('pseudo', 'Confirmation du mot de passe erronée, Veuillez réessayer.');
 
                 return view('templates/haut', ['titre' => 'Se connecter'])
                 . view('compte/compte_connecter')

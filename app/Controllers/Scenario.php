@@ -333,20 +333,17 @@ class Scenario extends BaseController
             $recuperation = $this->validator->getValidated();
             $data['scenario'] = $this->model->get_scenario($recuperation['code_scenario']);
             //verification de l'existence d'un participant
-            if($this->model->get_participant_by_email($recuperation['email'])->ptp_id)
-            {
+            $participant = $this->model->get_participant_by_email($recuperation['email']);
+            if (!empty($participant)) {
                 //insertion seulement dans partie
-                $participant = $this->model->get_participant_by_email($recuperation['email']);
                 $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);
-            }
-            else 
-            {
+            } else {
                 //insertion dans participant et partie
                 $this->model->set_participant($recuperation);
                 $participant = $this->model->get_participant_by_email($recuperation['email']);
-                $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);   
+                $this->model->set_partie($recuperation['difficulte'], $data['scenario']->snr_id, $participant->ptp_id);
             }
-
+            
             return redirect()->to('/scenario/afficher_scenarios');
         }
 
