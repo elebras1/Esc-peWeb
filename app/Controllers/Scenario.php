@@ -33,7 +33,7 @@ class Scenario extends BaseController
             if (!$this->validate(['code_etape' => 'required', 'code_scenario' => 'required', 'difficulte_etape' => 'required', 'reponse' => 'required'], $messages))
             { 
                 // La validation du formulaire a échoué, retour au formulaire !
-                return redirect()->to('/scenario/afficher_1ere_etape/'.$next_etape->etp_code.'/'.$recuperation['difficulte_etape']);
+                return redirect()->to('/scenario/afficher_1ere_etape/'.$recuperation['code_scenario'].'/'.$recuperation['difficulte_etape']);
             }
 
             $recuperation = $this->validator->getValidated();
@@ -55,7 +55,7 @@ class Scenario extends BaseController
         }
 
 
-        if (empty($code) || empty($difficulte) || $difficulte > 3)
+        if (empty($code) || empty($difficulte) || $difficulte > 3 || $difficulte < 1)
         {
             return view('templates/haut', ['erreur' => 'L\'information recherchée n\'existe pas !'])
             . view('etape/affichage_1ere_etape')
@@ -194,7 +194,7 @@ class Scenario extends BaseController
                 if(!empty($fichier)){
                     // Récupération du nom du fichier téléversé
                     $nom_fichier=$fichier->getName();
-                    // Dépôt du fichier dans le répertoire ci/public/images
+                    // Dépôt du fichier dans le répertoire ci/public/ressources
                     if($fichier->move("ressources",$nom_fichier)){
                         $recuperation['code'] = random_string('alnum', 10);
                         $recuperation['fichier'] = $nom_fichier;
@@ -282,7 +282,7 @@ class Scenario extends BaseController
         }
 
 
-        if (empty($code) || empty($difficulte) || $difficulte > 3)
+        if (empty($code) || empty($difficulte) || $difficulte > 3 || $difficulte < 1)
         {
             return view('templates/haut', ['erreur' => 'L\'information recherchée n\'existe pas !'])
             . view('etape/affichage_1ere_etape')

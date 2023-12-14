@@ -177,7 +177,6 @@ class Compte extends BaseController
                     return redirect()->to('/compte/lister');
                 }
                 else {
-                    $data['erreur'] = 'Le login choisis existe déjà';
                     return view('templates/haut2', ['titre' => 'Créer un compte', 'erreur' => 'Le pseudo choisi existe déjà'])
                     . view('compte/compte_creer', $recuperation)
                     . view('templates/bas2');
@@ -188,6 +187,7 @@ class Compte extends BaseController
             . view('compte/compte_creer')
             . view('templates/bas2');
         }
+        //pas connecté donc renvoie la vue de connection
         else 
         {
             return view('templates/haut', ['titre' => 'Se connecter'])
@@ -262,6 +262,7 @@ class Compte extends BaseController
 
                 if($data['profil']->cpt_mot_de_passe != hash('sha512', $recuperation['password'] . $this->model->get_salt()))
                 {
+                    //mdp différents donc on renvoie sur la modification
                     return view('templates/haut2', ['titre' => 'Modifier le profil'])
                     . view('compte/compte_modifier', $data)
                     . view('templates/bas2');
@@ -277,6 +278,7 @@ class Compte extends BaseController
             . view('compte/compte_modifier', $data)
             . view('templates/bas2');
         }
+        //pas connecté donc on renvoie la vue de connection
         else 
         {
             return view('templates/haut', ['titre' => 'Se connecter'])
