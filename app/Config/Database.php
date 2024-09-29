@@ -27,9 +27,9 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'e22206510sql',
-        'password'     => 'o3mGSKFu',
-        'database'     => 'e22206510_db1',
+        'username'     => 'root',
+        'password'     => '',
+        'database'     => 'escapeweb',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
