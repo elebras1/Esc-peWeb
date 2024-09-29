@@ -1,59 +1,45 @@
-# CodeIgniter 4 Framework
+[![Langage](https://img.shields.io/badge/Langage-PHP-blue.svg)](https://www.php.net/)
+[![Framework](https://img.shields.io/badge/Framework-CodeIgniter4-orange.svg)](https://codeigniter.com/user_guide/intro/index.html)
+[![Langage](https://img.shields.io/badge/Langage-HTML-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![Libraries](https://img.shields.io/badge/Library-Bootstrap-blueviolet.svg)](https://getbootstrap.com/)
+[![Langage](https://img.shields.io/badge/Langage-SQL/PSM-white.svg)](https://sql.sh/)
 
-## What is CodeIgniter?
+# EscapeWeb
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Ce projet CodeIgniter est une application web de jeux sérieux. L'objectif est qu'un utilisateur non connecté puisse participer à tous les scénarios créés par les organisateurs. Chaque scénario est composé d'étapes ; une étape comprend une question et des indices, en fonction de la difficulté choisie. L'administrateur est chargé de la gestion des comptes.
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+![escapeweb_demo](escapeweb_demo.gif)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+# Sommaire
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+- [Installation](#install)
+- [Fonctionnalités](#core_features)
+- [Licence](#licence)
 
-## Important Change with index.php
+## Installation
+<a id="install" class="anchor"></a>
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+1. Clonez le projet dans votre espace de stockage.
+2. Assurez-vous d'avoir une plateforme de développement web installée sur votre système, comme Laragon, XAMPP ou WAMP.
+3. Importez le fichier `db_final.sql` dans votre base de données.
+4. Éditez le fichier `./ci/app/Config/Database.php` pour configurer l'accès à votre base de données.
+5. Modifiez la variable `$baseURL` dans le fichier `./app/Config/App.php`.
+6. Selon vos besoins, éditez le fichier `./ci/env` et modifiez la variable `CI_ENVIRONMENT`. Renommez le fichier `env` en `.env` en conséquence.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Fonctionnalités
+<a id="core_features" class="anchor"></a>
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- Affichage des actualités sur la page d'accueil.
+- La liste de tous les scénarios et le choix de la difficulté sont disponibles pour tous les utilisateurs.
+- La participation à un scénario est possible pour tout utilisateur, et une fois terminé, l'utilisateur peut renseigner son identité.
+- Un utilisateur connecté peut visualiser et modifier les informations de son profil.
+- Un organisateur peut voir les détails de tous les scénarios, créer un nouveau scénario et supprimer ses scénarios.
+- Un administrateur peut accéder au récapitulatif de tous les utilisateurs, créer de nouveaux utilisateurs et les déclarer "actifs" ou non.
 
-## Repository Management
+## Licence
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Ce projet est sous licence [MIT](https://img.shields.io/badge/Licence-MIT-blue.svg).
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Pour plus de détails, veuillez consulter le fichier [LICENSE](public/licence.md).
 
-## Contributing
-
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> **Warning**
-> The end of life date for PHP 7.4 was November 28, 2022. If you are
-> still using PHP 7.4, you should upgrade immediately. The end of life date
-> for PHP 8.0 will be November 26, 2023.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+<a id="licence" class="anchor"></a>

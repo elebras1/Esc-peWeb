@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>160</y>
+      <w>260</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>COMPTE
+--
+_idCompte : int_
+loginCompte : varchar(45)
+motDePasseCompte : varchar(128)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>280</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>	PROFIL
+--
+_idCompte : int_
+nomProfil : varchar(80)
+prenomProfil : varchar(80)
+emailProfil : varchar(200)
+dateInscriptionProfil : date
+roleProfil : char(1)
+validite : char(1)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>0</y>
+      <w>220</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ACTUALITE
+--
+_idActualite : int_
+titreActualite : varchar(80)
+descriptionActualite : varchar(280)
+statutActualite : char(1)
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>150</y>
+      <w>230</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>SCENARIO
+--
+_idScenario : int_
+codeScenario : char(15)
+intituleScenario : varchar(180)
+descriptionScenario : varchar(380)
+statutScenario : char(1)
+imageScenario : varchar(300)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>360</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>ETAPE
+--
+_idEtape : int_
+codeEtape : char(8)
+intituleEtape : varchar(180)
+descriptionEtape : varchar(380)
+questionEtape : varchar(280)
+reponseEtape : varchar(120)
+statutEtape : char(1)
+numero : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>850</x>
+      <y>570</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>INDICE
+--
+_idIndice : int_
+descriptionIndice : varchar(280)
+hyperlienIndice : varchar(300)
+idcDifficulte : char(1)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>370</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>RESSOURCE
+--
+_idRessource : int_
+typeRessource : varchar(80)
+lienRessource : varchar(120)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>270</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+--
+datePremiereReussite : datetime
+dateDerniereReussite : datetime
+niveauPartie : char(1)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>140</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PARTICIPANT
+--
+_idParticipant : id_
+emailParticipant : varchar(200)
+nomParticipant : varchar(80)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>210</y>
+      <w>170</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=1..1
+possède &gt;</panel_attributes>
+    <additional_attributes>30.0;10.0;80.0;10.0;80.0;130.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>20</y>
+      <w>200</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=0..*
+publie &gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>250</x>
+      <y>170</y>
+      <w>280</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=0..*
+crée &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>220</y>
+      <w>90</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=0..*
+ &gt;</panel_attributes>
+    <additional_attributes>70.0;190.0;10.0;190.0;10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>450</y>
+      <w>160</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=0..3
+compose &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;180.0;140.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>410</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..1
+utilise &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>170</y>
+      <w>430</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=0..*
+réussi par &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;410.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>180</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0;270.0;140.0</additional_attributes>
+  </element>
+</diagram>
